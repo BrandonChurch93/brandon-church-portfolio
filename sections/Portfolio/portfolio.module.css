@@ -1,0 +1,15 @@
+.portfolio {
+  padding: 2rem;
+}
+
+.projects {
+  display: flex;
+  justify-content: space-around;
+}
+
+.project {
+  background-color: #ddd;
+  padding: 1rem;
+  width: 30%;
+  text-align: center;
+}
