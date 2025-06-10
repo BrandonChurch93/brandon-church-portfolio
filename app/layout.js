@@ -15,6 +15,7 @@ const spaceGrotesk = Space_Grotesk({
   display: "swap",
 });
 
+// Metadata export (without viewport and themeColor)
 export const metadata = {
   title: "Brandon Church | Front-End Developer & XR/AI UI/UX Designer",
   description:
@@ -59,12 +60,6 @@ export const metadata = {
       "max-snippet": -1,
     },
   },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
-  },
-  themeColor: "#6366f1",
   manifest: "/manifest.json",
   icons: {
     icon: [
@@ -74,6 +69,14 @@ export const metadata = {
     ],
     apple: [{ url: "/apple-touch-icon.png" }],
   },
+};
+
+// Separate viewport export (NEW)
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#6366f1",
 };
 
 export default function RootLayout({ children }) {

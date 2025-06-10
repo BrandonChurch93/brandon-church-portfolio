@@ -1,13 +1,6 @@
 "use client";
 
 import { create } from "zustand";
-import { OpenAI } from "openai";
-
-// Initialize OpenAI client
-const openai = new OpenAI({
-  apiKey: process.env.NEXT_PUBLIC_OPENAI_KEY,
-  dangerouslyAllowBrowser: true, // Required for client-side usage
-});
 
 // Load resume context
 let resumeContext = null;
@@ -73,45 +66,39 @@ const useChatbotStore = create((set, get) => ({
       const resume = await loadResumeContext();
 
       // Prepare messages for API
-      const systemMessage = {
-        role: "system",
-        content: `You are Brandon Church's AI assistant. You have access to Brandon's professional background and should answer questions as if you were representing him professionally. Here's his information: ${JSON.stringify(
-          resume,
-          null,
-          2
-        )}
-        
-        Guidelines:
-        - Be professional but friendly
-        - Highlight Brandon's expertise in AI integration and XR development
-        - Mention specific projects and achievements when relevant
-        - If asked about availability or rates, suggest contacting Brandon directly
-        - Keep responses concise but informative`,
-      };
+      const apiMessages = messages
+        .filter((m) => m.type === "message")
+        .map((m) => ({
+          role: m.role,
+          content: m.content,
+        }));
 
-      const apiMessages = [
-        systemMessage,
-        ...messages
-          .filter((m) => m.type === "message")
-          .map((m) => ({
-            role: m.role,
-            content: m.content,
-          })),
-        { role: "user", content },
-      ];
+      // Add current message
+      apiMessages.push({ role: "user", content });
 
-      // Call OpenAI API
-      const completion = await openai.chat.completions.create({
-        model: "gpt-3.5-turbo",
-        messages: apiMessages,
-        temperature: 0.7,
-        max_tokens: 500,
+      // Call our API route instead of OpenAI directly
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          messages: apiMessages,
+          resumeContext: resume,
+        }),
       });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Failed to get response");
+      }
+
+      const data = await response.json();
 
       // Add AI response
       addMessage({
         role: "assistant",
-        content: completion.choices[0].message.content,
+        content: data.message,
         type: "message",
       });
     } catch (error) {
@@ -120,9 +107,10 @@ const useChatbotStore = create((set, get) => ({
       // Determine error type
       let errorMessage = "Sorry, I encountered an error. Please try again.";
 
-      if (error.message?.includes("401")) {
-        errorMessage = "API authentication failed. Please check the API key.";
-      } else if (error.message?.includes("429")) {
+      if (error.message?.includes("authentication")) {
+        errorMessage =
+          "API authentication failed. Please check the API key configuration.";
+      } else if (error.message?.includes("Rate limit")) {
         errorMessage =
           "Rate limit exceeded. Please wait a moment and try again.";
       } else if (error.message?.includes("network")) {
