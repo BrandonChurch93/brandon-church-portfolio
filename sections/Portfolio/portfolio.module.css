@@ -1,15 +1,1019 @@
+/* Portfolio Section - Clean & Focused */
 .portfolio {
-  padding: 2rem;
-}
-
-.projects {
+  position: relative;
+  min-height: 100vh;
   display: flex;
-  justify-content: space-around;
+  align-items: center;
+  padding: var(--space-3xl) 0;
+  overflow: hidden;
 }
 
-.project {
-  background-color: #ddd;
-  padding: 1rem;
-  width: 30%;
+.mainContainer {
+  position: relative;
+  width: 100%;
+  perspective: 1000px;
+}
+
+/* Background Layers */
+.backgroundLayers {
+  position: absolute;
+  inset: -20%;
+  pointer-events: none;
+}
+
+/* Grid Pattern */
+.gridPattern {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+      rgba(99, 102, 241, 0.02) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(99, 102, 241, 0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+}
+
+/* Code Particles - Enhanced */
+.codeSymbol {
+  position: absolute;
+  bottom: 0;
+  font-family: "SF Mono", "Monaco", monospace;
+  color: var(--color-primary-light);
+  opacity: 0;
+  font-weight: 600;
+  text-shadow: 0 0 10px currentColor;
+  will-change: transform, opacity;
+}
+
+/* Orbital System */
+.orbitalSystem {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  opacity: 0.1;
+}
+
+.orbit1,
+.orbit2,
+.orbit3 {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid;
+}
+
+.orbit1 {
+  border-color: var(--color-primary);
+  transform: scale(1);
+}
+
+.orbit2 {
+  border-color: var(--color-secondary);
+  transform: scale(0.7);
+}
+
+.orbit3 {
+  border-color: var(--color-accent);
+  transform: scale(0.4);
+}
+
+/* Geometric Shapes */
+.geometricShapes {
+  position: absolute;
+  inset: 0;
+}
+
+.floatingShape {
+  position: absolute;
+  width: var(--shape-size);
+  height: var(--shape-size);
+  opacity: 0.1;
+}
+
+.shape0 {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, var(--color-primary), transparent);
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+.shape1 {
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--color-secondary);
+  border-radius: 50%;
+  position: relative;
+}
+
+.shape1::after {
+  content: "";
+  position: absolute;
+  inset: 20%;
+  border: 1px solid var(--color-secondary);
+  border-radius: 50%;
+}
+
+.shape2 {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--color-accent), transparent);
+  clip-path: polygon(
+    30% 0%,
+    70% 0%,
+    100% 30%,
+    100% 70%,
+    70% 100%,
+    30% 100%,
+    0% 70%,
+    0% 30%
+  );
+}
+
+.shape3 {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: 2px solid var(--color-primary);
+  transform: rotate(45deg);
+  position: relative;
+}
+
+.shape3::before {
+  content: "";
+  position: absolute;
+  inset: 25%;
+  border: 1px solid var(--color-primary);
+}
+
+/* Main Content */
+.content {
+  position: relative;
+  z-index: 10;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--space-2xl);
   text-align: center;
+}
+
+/* Section Header */
+.sectionHeader {
+  margin-bottom: var(--space-3xl);
+  position: relative;
+}
+
+.sectionHeader::before,
+.sectionHeader::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 100px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1));
+}
+
+.sectionHeader::before {
+  left: 50%;
+  transform: translateX(-200px);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1));
+}
+
+.sectionHeader::after {
+  right: 50%;
+  transform: translateX(200px);
+  background: linear-gradient(270deg, transparent, rgba(255, 255, 255, 0.1));
+}
+
+.sectionTitle {
+  font-size: var(--fs-5xl); /* Matching contact section */
+  font-weight: 700;
+  margin-bottom: var(--space-md);
+  letter-spacing: -0.02em;
+  position: relative;
+  color: var(--color-light);
+  perspective: 1000px;
+  display: inline-block;
+}
+
+/* Title gradient effect */
+.sectionTitle::before {
+  content: "Portfolio";
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: var(--fs-5xl);
+  font-weight: 700;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-secondary) 50%,
+    var(--color-accent) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  z-index: -1;
+}
+
+.sectionTitle:hover::before {
+  opacity: 1;
+}
+
+/* Title decorative elements */
+.sectionTitle::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-primary) 20%,
+    var(--color-secondary) 50%,
+    var(--color-accent) 80%,
+    transparent
+  );
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform var(--transition-base);
+}
+
+.sectionTitle:hover::after {
+  transform: scaleX(1);
+}
+
+.titleLetter {
+  display: inline-block;
+  transition: all var(--transition-spring);
+  transform-style: preserve-3d;
+  cursor: pointer;
+  position: relative;
+  text-shadow: 0 2px 20px rgba(99, 102, 241, 0.2);
+}
+
+.titleLetter:hover {
+  color: var(--color-primary);
+  text-shadow: 0 2px 20px rgba(99, 102, 241, 0.4),
+    0 0 40px rgba(99, 102, 241, 0.3);
+}
+
+.sectionUnderline {
+  width: 100px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 0 auto;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.underlineProgress {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 20px var(--color-primary);
+}
+
+.coreDisplay {
+  margin-bottom: var(--space-2xl);
+  position: relative;
+  /* Removed any box-shadow that might be inherited */
+}
+
+/* Remove the dark background/shadow from the display area */
+.projectTypeDisplay {
+  margin-bottom: var(--space-xl);
+  position: relative;
+  /* Ensure no shadows or dark backgrounds */
+  background: transparent;
+  box-shadow: none;
+}
+
+.centralOrb {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto var(--space-xl);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(
+    circle at center,
+    rgba(99, 102, 241, 0.05),
+    transparent 70%
+  );
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all var(--transition-spring);
+}
+
+/* Glowing aura effect instead of box shadow */
+.centralOrb::after {
+  content: "";
+  position: absolute;
+  inset: -40px;
+  background: conic-gradient(
+    from 0deg,
+    transparent,
+    rgba(99, 102, 241, 0.1),
+    rgba(6, 182, 212, 0.1),
+    rgba(245, 158, 11, 0.1),
+    transparent
+  );
+  border-radius: 50%;
+  filter: blur(30px);
+  opacity: 0.5;
+  animation: auraRotate 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes auraRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.centralOrb::before {
+  content: "";
+  position: absolute;
+  inset: -30px;
+  background: radial-gradient(
+    circle at center,
+    transparent 30%,
+    rgba(99, 102, 241, 0.4) 50%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  pointer-events: none;
+}
+
+.centralOrb:hover::before {
+  opacity: 0.3;
+  animation: orbPulse 2s ease-in-out infinite;
+}
+
+@keyframes orbPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.orbInner {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: var(--color-light);
+  z-index: 2;
+  position: relative;
+  transition: all var(--transition-spring);
+  overflow: hidden;
+}
+
+.orbInner::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent,
+    var(--color-primary),
+    transparent,
+    var(--color-secondary),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  animation: none;
+}
+
+.centralOrb:hover .orbInner::before {
+  opacity: 0.3;
+  animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.orbInner svg {
+  transition: all var(--transition-spring);
+  z-index: 1;
+  position: relative;
+}
+
+.orbRing,
+.orbRing2,
+.orbRing3 {
+  transition: all var(--transition-spring);
+}
+
+.orbGlow {
+  position: absolute;
+  inset: -40px;
+  background: radial-gradient(
+    circle at center,
+    rgba(99, 102, 241, 0.3),
+    transparent 60%
+  );
+  filter: blur(20px);
+  pointer-events: none;
+}
+
+.orbRing {
+  position: absolute;
+  inset: -20px;
+  border: 2px solid;
+  border-image: linear-gradient(
+      45deg,
+      var(--color-primary),
+      var(--color-secondary),
+      var(--color-accent),
+      var(--color-primary)
+    )
+    1;
+  border-radius: 50%;
+}
+
+.orbRing2 {
+  position: absolute;
+  inset: -35px;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  border-radius: 50%;
+  border-style: dashed;
+}
+
+.orbRing3 {
+  position: absolute;
+  inset: -50px;
+  border: 1px solid rgba(6, 182, 212, 0.2);
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+/* Project Type Display */
+.projectTypeDisplay {
+  margin-bottom: var(--space-xl);
+}
+
+.currentlyBuilding {
+  font-size: var(--fs-sm);
+  color: var(--color-light-secondary);
+  opacity: 0.7;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-sm);
+}
+
+.typeRotator {
+  height: 80px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+  /* Ensure no background or shadows */
+  background: transparent;
+  box-shadow: none;
+}
+
+.typeRotator::before,
+.typeRotator::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.typeRotator::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--color-dark) 20%, transparent);
+}
+
+.typeRotator::after {
+  right: 0;
+  background: linear-gradient(270deg, var(--color-dark) 20%, transparent);
+}
+
+/* Alternative approach - make gradients more transparent on smaller screens */
+@media (max-width: 1024px) {
+  .typeRotator::before,
+  .typeRotator::after {
+    display: none !important;
+  }
+}
+
+.projectType {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  font-size: var(--fs-2xl);
+  font-weight: 700;
+  width: 100%;
+  white-space: nowrap;
+  will-change: transform, opacity, filter;
+  /* Ensure no box shadow */
+  box-shadow: none;
+  background: transparent;
+}
+
+.projectType svg {
+  filter: drop-shadow(0 0 20px currentColor);
+  transition: all var(--transition-spring);
+}
+
+.projectType h3 {
+  position: relative;
+  background: linear-gradient(
+    to bottom,
+    currentColor 0%,
+    currentColor 50%,
+    rgba(255, 255, 255, 0.5) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.projectType h3::before {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform var(--transition-base);
+  border-radius: var(--radius-full);
+}
+
+.projectType h3::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 3px;
+  background: currentColor;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all var(--transition-base);
+}
+
+.projectType[style*="opacity: 1"] h3::before {
+  transform: scaleX(1);
+}
+
+.projectType[style*="opacity: 1"] h3::after {
+  opacity: 1;
+  animation: dotPulse 2s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+  0%,
+  100% {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(-50%) scale(1.5);
+    opacity: 0.5;
+  }
+}
+
+/* Description */
+.description {
+  margin-bottom: var(--space-2xl);
+  position: relative;
+}
+
+.description::before {
+  content: '"';
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 60px;
+  color: var(--color-primary);
+  opacity: 0.1;
+  font-family: serif;
+}
+
+.mainDescription {
+  font-size: var(--fs-xl);
+  color: var(--color-light);
+  margin-bottom: var(--space-md);
+  font-weight: 500;
+  line-height: 1.6;
+  position: relative;
+  padding: 0 var(--space-lg);
+}
+
+.subDescription {
+  font-size: var(--fs-base);
+  color: var(--color-light-secondary);
+  opacity: 0.8;
+  line-height: 1.7;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+/* Tech Stack Preview */
+.techStackPreview {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.01)
+  );
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  margin-bottom: var(--space-xl);
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-base);
+}
+
+.techStackPreview::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-primary),
+    var(--color-secondary),
+    transparent
+  );
+  animation: techScanLine 8s ease-in-out infinite;
+}
+
+@keyframes techScanLine {
+  0%,
+  100% {
+    left: -100%;
+  }
+  50% {
+    left: 100%;
+  }
+}
+
+.techStackPreview:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.02)
+  );
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.techStackPreview h4 {
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  margin-bottom: var(--space-md);
+  color: var(--color-light);
+}
+
+.techGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  justify-content: center;
+}
+
+/* Enhanced Tech Item Hover Effects */
+.techItem {
+  position: relative;
+  padding: var(--space-xs) var(--space-md);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-full);
+  font-size: var(--fs-sm);
+  color: var(--color-light-secondary);
+  transition: all var(--transition-spring);
+  cursor: pointer;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Create a pseudo-element for the glow effect that stays BEHIND the text */
+.techItem::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, var(--color-primary) 0%, transparent 70%);
+  transition: all var(--transition-base);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  z-index: -1; /* Ensure it stays behind the text */
+  pointer-events: none;
+}
+
+/* Additional background glow layer */
+.techItem::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(
+    45deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+  border-radius: var(--radius-full);
+  opacity: 0;
+  z-index: -2;
+  transition: opacity var(--transition-base);
+  filter: blur(10px);
+}
+
+.techItem:hover {
+  background: rgba(99, 102, 241, 0.15);
+  border-color: var(--color-primary);
+  color: var(--color-light);
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3),
+    0 20px 40px rgba(99, 102, 241, 0.15),
+    inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  font-weight: 600;
+  z-index: 10;
+}
+
+.techItem:hover::before {
+  width: 150px;
+  height: 150px;
+  opacity: 0.3;
+}
+
+.techItem:hover::after {
+  opacity: 0.5;
+}
+
+/* Add a subtle animation on hover */
+@keyframes techItemGlow {
+  0%,
+  100% {
+    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3),
+      0 20px 40px rgba(99, 102, 241, 0.15),
+      inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4),
+      0 25px 50px rgba(99, 102, 241, 0.2),
+      inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  }
+}
+
+.techItem:hover {
+  animation: techItemGlow 2s ease-in-out infinite;
+}
+
+/* Add different hover colors based on position for variety */
+.techItem:nth-child(odd):hover {
+  background: rgba(6, 182, 212, 0.15);
+  border-color: var(--color-secondary);
+  box-shadow: 0 10px 25px rgba(6, 182, 212, 0.3),
+    0 20px 40px rgba(6, 182, 212, 0.15),
+    inset 0 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+.techItem:nth-child(3n):hover {
+  background: rgba(245, 158, 11, 0.15);
+  border-color: var(--color-accent);
+  box-shadow: 0 10px 25px rgba(245, 158, 11, 0.3),
+    0 20px 40px rgba(245, 158, 11, 0.15),
+    inset 0 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+/* Coming Soon */
+.comingSoon {
+  display: flex;
+  justify-content: center;
+}
+
+.statusIndicator {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-lg);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-full);
+  font-size: var(--fs-sm);
+  color: var(--color-light-secondary);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  overflow: hidden;
+}
+
+.statusIndicator::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(99, 102, 241, 0.1),
+    transparent
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.statusIndicator:hover {
+  background: rgba(99, 102, 241, 0.05);
+  border-color: rgba(99, 102, 241, 0.3);
+  color: var(--color-light);
+  transform: scale(1.02);
+}
+
+.statusIndicator:hover::before {
+  transform: translateX(100%);
+}
+
+.statusIndicator:hover .statusDot {
+  animation: statusPulse 0.6s ease-in-out;
+}
+
+@keyframes statusPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 var(--color-primary);
+  }
+  50% {
+    transform: scale(1.2);
+    box-shadow: 0 0 0 8px transparent;
+  }
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Abstract Visualization */
+.abstractViz {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.vizElement {
+  position: absolute;
+  border: 1px solid;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.vizElement:nth-child(1) {
+  border-color: rgba(99, 102, 241, 0.2);
+}
+
+.vizElement:nth-child(2) {
+  border-color: rgba(6, 182, 212, 0.2);
+}
+
+.vizElement:nth-child(3) {
+  border-color: rgba(245, 158, 11, 0.2);
+}
+
+.vizElement:nth-child(4) {
+  border-color: rgba(168, 85, 247, 0.2);
+}
+
+.vizElement:nth-child(5) {
+  border-color: rgba(99, 102, 241, 0.2);
+}
+
+/* Animations */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sectionTitle {
+    font-size: var(--fs-3xl);
+  }
+
+  .centralOrb {
+    width: 120px;
+    height: 120px;
+  }
+
+  .orbInner {
+    width: 80px;
+    height: 80px;
+  }
+
+  .projectType {
+    font-size: var(--fs-xl);
+  }
+
+  .mainDescription {
+    font-size: var(--fs-lg);
+  }
+
+  .techGrid {
+    gap: var(--space-xs);
+  }
+
+  .techItem {
+    font-size: var(--fs-xs);
+    padding: var(--space-xs) var(--space-sm);
+  }
+
+  .floatingTech {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    padding: var(--space-lg);
+  }
+
+  .typeRotator {
+    height: 60px;
+  }
+
+  /* Force remove the gradient overlays on small screens */
+  .typeRotator::before,
+  .typeRotator::after {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+
+  .projectType {
+    font-size: var(--fs-lg);
+    gap: var(--space-sm);
+  }
+
+  .projectType svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .techStackPreview {
+    padding: var(--space-md);
+  }
 }
