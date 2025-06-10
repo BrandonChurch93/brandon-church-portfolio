@@ -1,0 +1,161 @@
+{
+  "name": "Brandon Church",
+  "title": "AI-First Front-End Engineer & XR UI/UX Designer",
+  "contact": {
+    "phone": "803-522-1065",
+    "email": "brandonleochurch@gmail.com",
+    "website": "www.brandonchurchportfolio.com"
+  },
+  "summary": "Senior UI/UX developer and front-end engineer with over a decade of experience building scalable, accessible digital products across AI, XR, and web platforms. Known for delivering WCAG-compliant applications, designing reusable UI systems, and integrating LLMs into responsive user experiences.",
+  "skills": {
+    "development": [
+      "JavaScript (ES6+)",
+      "TypeScript",
+      "HTML5",
+      "CSS3",
+      "React",
+      "Angular",
+      "Vue.js",
+      "Tailwind CSS",
+      "SASS/SCSS",
+      "Next.js",
+      "jQuery",
+      "Node.js",
+      "REST API Integration",
+      "Git",
+      "npm",
+      "ServiceNow Development",
+      "CMS Development",
+      "Database Integration"
+    ],
+    "design": [
+      "Figma",
+      "Photoshop",
+      "Illustrator",
+      "Adobe XD",
+      "UI/UX Design",
+      "Wireframing",
+      "Prototyping",
+      "WCAG 2.1 Compliance",
+      "Section 508 Testing",
+      "Design Systems",
+      "Responsive Design",
+      "Accessibility Auditing",
+      "User Research",
+      "Usability Testing"
+    ],
+    "ai_and_xr": [
+      "Prompt Engineering",
+      "LLM Integration",
+      "OpenAI API",
+      "TensorFlow.js",
+      "Three.js",
+      "WebXR",
+      "Framer Motion",
+      "Immersive UI/UX",
+      "XR Interface Design",
+      "Spatial Design",
+      "3D Asset Pipeline",
+      "Tailwind CSS",
+      "AI Tooling"
+    ],
+    "tools_and_frameworks": [
+      "React",
+      "Next.js",
+      "Node.js",
+      "Framer Motion",
+      "Three.js",
+      "Tailwind CSS"
+    ],
+    "leadership": [
+      "Agile/Scrum",
+      "Scrum Master Certified",
+      "Team Management",
+      "Client Relations",
+      "Project Planning",
+      "SEO Optimization",
+      "Technical Training",
+      "Hiring and Onboarding"
+    ]
+  },
+  "work_experience": [
+    {
+      "role": "Director of UI/UX",
+      "company": "Leidit",
+      "location": "Remote",
+      "dates": "Feb 2023 - Present",
+      "highlights": [
+        "Led WCAG-compliant ServiceNow application development for government clients",
+        "Designed Figma mockups, coded Angular front-ends, integrated APIs and AI features",
+        "Conducted 508 testing, led demos, standups, and training documentation",
+        "Managed hiring and created marketing assets"
+      ]
+    },
+    {
+      "role": "Founder & COO",
+      "company": "Modern Softworks",
+      "location": "North Augusta, SC",
+      "dates": "Sep 2020 - Present (Part-Time since Apr 2022)",
+      "highlights": [
+        "Founded and scaled software & digital marketing firm",
+        "Delivered accessible, SEO-optimized websites using WordPress, React, Angular, and Express",
+        "Built reusable templates, web tools, and UI auditing systems",
+        "Managed full-time and outsourced teams"
+      ]
+    },
+    {
+      "role": "UI/UX Developer",
+      "company": "Jobvite",
+      "location": "Remote",
+      "dates": "Apr 2022 - Oct 2022",
+      "highlights": [
+        "Built responsive career websites from Figma designs",
+        "Used HTML, CSS, JavaScript, jQuery, and Foundation CSS",
+        "Integrated with CMS and optimized for SEO and accessibility"
+      ]
+    },
+    {
+      "role": "Front-End Software Developer",
+      "company": "Rural Sourcing Inc.",
+      "location": "Augusta, GA",
+      "dates": "Jan 2020 - Sep 2020",
+      "highlights": [
+        "Developed internal tool front-end using React, HTML, CSS, JavaScript",
+        "Led full front-end delivery in coordination with backend teams"
+      ]
+    },
+    {
+      "role": "Software Developer",
+      "company": "MAP Academy Tutors",
+      "location": "Augusta, GA",
+      "dates": "May 2019 - Dec 2019",
+      "highlights": [
+        "Led agile team to build app front-end using JavaScript and CSS",
+        "Integrated with Azure databases and facilitated standups"
+      ]
+    }
+  ],
+  "education": {
+    "degree": "Associate of Science in Computer Programming",
+    "institution": "Augusta Technical College",
+    "location": "Augusta, GA"
+  },
+  "certifications": [
+    "Certified JavaScript Developer",
+    "Microsoft Technology Associate: HTML and CSS",
+    "Microsoft MCE: Certified Educator",
+    "Google: Digital Marketing",
+    "Certified C# Developer",
+    "Certified C++ Developer",
+    "CompTIA A+",
+    "CompTIA Network+",
+    "CompTIA Security+"
+  ],
+  "location": "Boise, Idaho",
+  "about": {
+    "professional_overview": "I'm a senior front-end developer and UI/UX designer with over a decade of experience building scalable, high-impact software. I've managed cross-functional teams and independently designed and coded multimillion-dollar applications from the ground up. Whether it's architecting WCAG-compliant interfaces for government platforms or crafting responsive React/Next.js frameworks for commercial products, I bring a blend of technical depth and creative vision. As the founder of Modern Softworks, I scaled a software and digital marketing business, delivering SEO-optimized, accessible websites and reusable design systems that exceed user expectations. My entrepreneurial background means I understand every facet of a product's lifecycle\u2014strategy, UX research, development, and go-to-market\u2014enabling me to see the bigger picture and deliver value across the organization.",
+    "future_goals_and_vision": "My long-term mission is to advance how people experience and interact with technology\u2014not for recognition, but to help build a more thoughtful, equitable, and connected future. I believe AI, XR, and intuitive design can bridge gaps in education, creativity, and opportunity across the globe. I'm passionate about developing interfaces that feel natural, personal, and even joyful\u2014whether it's voice-powered AI assistants, adaptive XR environments, or tools that empower users in ways they never imagined. As a visionary builder with entrepreneurial roots, I\u2019m committed to creating human-centered products that uplift lives, spark innovation, and help shape a more empowered and technologically enriched society.",
+    "what_i_offer": "You don\u2019t just need clean code\u2014you need intelligent, scalable solutions that create impact. As a senior UI/UX developer and expert in AI prompt engineering, I integrate cutting-edge tools like OpenAI and TensorFlow to personalize experiences, automate workflows, and solve real business problems. My front-end stack\u2014React, Next.js, Tailwind, and Figma\u2014ensures fast, accessible interfaces that adapt across devices and scale with ease. I\u2019ve built and led WCAG-compliant platforms, designed complete UI systems, and delivered high-performance applications for enterprise and startup clients alike. Whether you're launching a new product or upgrading an existing one, I bring a full-stack mindset to front-end challenges\u2014bridging business goals with technical execution and unlocking new value through AI.",
+    "portfolio_status": "This portfolio was launched in Q2 of 2025. Projects are currently being worked on and will be featured on the portfolio in Q3 of 2025."
+  }
+}
