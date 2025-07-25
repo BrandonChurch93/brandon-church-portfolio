@@ -1,65 +1,69 @@
-// src/app/api/chat/route.js
-import { OpenAI } from "openai";
 import { NextResponse } from "next/server";
-
-// Initialize OpenAI with server-side API key
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY, // Note: No NEXT_PUBLIC_ prefix
-});
 
 export async function POST(request) {
   try {
-    const { messages, resumeContext } = await request.json();
+    const { messages, userMessage, trainingData } = await request.json();
 
-    // Prepare system message
-    const systemMessage = {
-      role: "system",
-      content: `You are Brandon Church's AI assistant. You have access to Brandon's professional background and should answer questions as if you were representing him professionally. Here's his information: ${JSON.stringify(
-        resumeContext,
-        null,
-        2
-      )}
-        
-        Guidelines:
-        - Be professional but friendly
-        - Highlight Brandon's expertise in AI integration and XR development
-        - Mention specific projects and achievements when relevant
-        - If asked about availability or rates, suggest contacting Brandon directly
-        - Keep responses concise but informative`,
-    };
-
-    // Prepare messages for OpenAI
-    const apiMessages = [systemMessage, ...messages];
-
-    // Call OpenAI API
-    const completion = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
-      messages: apiMessages,
-      temperature: 0.7,
-      max_tokens: 500,
-    });
-
-    return NextResponse.json({
-      message: completion.choices[0].message.content,
-    });
-  } catch (error) {
-    console.error("OpenAI API error:", error);
-
-    // Handle specific error types
-    if (error.status === 401) {
+    // Check if API key exists
+    if (!process.env.OPENAI_API_KEY) {
+      console.error("OpenAI API key not found");
       return NextResponse.json(
-        { error: "API authentication failed" },
-        { status: 401 }
-      );
-    } else if (error.status === 429) {
-      return NextResponse.json(
-        { error: "Rate limit exceeded" },
-        { status: 429 }
+        { error: "OpenAI API key not configured" },
+        { status: 500 }
       );
     }
 
+    console.log("Making OpenAI API call...");
+
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+      },
+      body: JSON.stringify({
+        model: "gpt-3.5-turbo",
+        messages: [
+          {
+            role: "system",
+            content: `You are Brandon Church's AI assistant. Use this information to answer questions: ${JSON.stringify(
+              trainingData
+            )}. 
+            Speak as if you are representing Brandon, using "Brandon" or "he" when referring to him. 
+            Be helpful, professional, and friendly. Keep responses concise and relevant.`,
+          },
+          ...messages
+            .filter((m) => m.type === "user" || m.type === "bot")
+            .map((m) => ({
+              role: m.type === "user" ? "user" : "assistant",
+              content: m.content,
+            })),
+          {
+            role: "user",
+            content: userMessage,
+          },
+        ],
+        temperature: 0.7,
+        max_tokens: 200,
+      }),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error("OpenAI API error:", errorData);
+      throw new Error(
+        `OpenAI API error: ${errorData.error?.message || "Unknown error"}`
+      );
+    }
+
+    const data = await response.json();
+    return NextResponse.json({
+      message: data.choices[0].message.content,
+    });
+  } catch (error) {
+    console.error("Error in chat API:", error.message);
     return NextResponse.json(
-      { error: "Failed to process chat request" },
+      { error: error.message || "Failed to generate response" },
       { status: 500 }
     );
   }

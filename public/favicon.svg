@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Background dark rounded square for better visibility at small sizes -->
+  <rect width="512" height="512" rx="96" fill="#0a0118"></rect>
+  
+  <!-- Definitions -->
+  <defs>
+    <linearGradient id="SvgjsLinearGradient1014" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff3f81"></stop>
+      <stop offset="100%" stop-color="#a78bfa"></stop>
+    </linearGradient>
+    
+    <!-- Neon glow filter -->
+    <filter id="SvgjsFilter1013" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"></feGaussianBlur>
+      <feMerge>
+        <feMergeNode in="coloredBlur"></feMergeNode>
+        <feMergeNode in="SourceGraphic"></feMergeNode>
+      </feMerge>
+    </filter>
+    
+    <!-- Text shadow glow -->
+    <filter id="SvgjsFilter1012" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="12"></feGaussianBlur>
+      <feOffset dx="0" dy="0" result="offsetblur"></feOffset>
+      <feFlood flood-color="#ff3f81" flood-opacity="0.8"></feFlood>
+      <feComposite in2="offsetblur" operator="in"></feComposite>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.8"></feFuncA>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode></feMergeNode>
+        <feMergeNode in="SourceGraphic"></feMergeNode>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Outer ring -->
+  <circle cx="256" cy="256" r="220" stroke="url(#bc-gradient)" stroke-width="12" fill="none" opacity="0.5"></circle>
+
+  <!-- Inner circle with glass effect -->
+  <circle cx="256" cy="256" r="200" fill="rgba(255, 255, 255, 0.05)" stroke="rgba(255, 255, 255, 0.1)" stroke-width="4"></circle>
+
+  <!-- BC Text -->
+  <text x="256" y="256" text-anchor="middle" dominant-baseline="central" fill="white" font-size="180" font-weight="bold" font-family="system-ui, -apple-system, sans-serif" letter-spacing="-8" filter="url(#textGlow)">
+    BC
+  </text>
+
+  <!-- Accent dot -->
+  <circle cx="380" cy="132" r="24" fill="#ff3f81" opacity="0.8"></circle>
+</svg><style>@media (prefers-color-scheme: light) { :root { filter: none; } }
+@media (prefers-color-scheme: dark) { :root { filter: none; } }
+</style></svg>

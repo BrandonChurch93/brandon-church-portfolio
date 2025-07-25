@@ -1,54 +1,74 @@
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Inter, Space_Grotesk } from "next/font/google";
-import Providers from "./providers";
 
-// Font configurations
-const inter = Inter({
+const geistSans = Geist({
+  variable: "--font-geist-sans",
   subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
 });
 
-const spaceGrotesk = Space_Grotesk({
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
   subsets: ["latin"],
-  variable: "--font-space-grotesk",
-  display: "swap",
 });
 
-// Metadata export (without viewport and themeColor)
 export const metadata = {
-  title: "Brandon Church | Front-End Developer & XR/AI UI/UX Designer",
+  title: "Brandon Church - Senior UI/UX Developer & AI Specialist",
   description:
-    "Senior Front-End Developer and UI/UX Designer specializing in AI integration and Extended Reality (XR) experiences. Building the future of human-computer interaction.",
+    "Full-stack developer specializing in AI integration, building intelligent, scalable solutions that create impact. Creator of SwiftSnapAI. 10+ years of experience in enterprise applications.",
   keywords:
-    "Brandon Church, Front-End Developer, UI/UX Designer, XR Design, AI Integration, Extended Reality, AR/VR Design, Portfolio",
+    "Brandon Church, UI/UX Developer, AI Engineer, AI Integration, React, TypeScript, Next.js, Chrome Extensions, Full-Stack Developer, WCAG Compliance, SwiftSnapAI",
   authors: [{ name: "Brandon Church" }],
   creator: "Brandon Church",
-  publisher: "Brandon Church",
+
+  // Icons
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png" }],
+  },
+
+  // Manifest
+  manifest: "/site.webmanifest",
+
+  // Open Graph
   openGraph: {
-    title: "Brandon Church | Front-End Developer & XR/AI UI/UX Designer",
+    title: "Brandon Church - Senior UI/UX Developer & AI Specialist",
     description:
-      "Senior Front-End Developer and UI/UX Designer specializing in AI integration and Extended Reality (XR) experiences.",
+      "Full-stack developer specializing in AI integration, building intelligent, scalable solutions that create impact. Creator of SwiftSnapAI.",
     url: "https://brandonchurchportfolio.com",
     siteName: "Brandon Church Portfolio",
     images: [
       {
-        url: "/images/og-image.png",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Brandon Church - XR/AI UI/UX Designer",
+        alt: "Brandon Church - AI Engineer & Full-Stack Developer",
       },
     ],
     locale: "en_US",
     type: "website",
   },
+
+  // Twitter
   twitter: {
     card: "summary_large_image",
-    title: "Brandon Church | Front-End Developer & XR/AI UI/UX Designer",
+    title: "Brandon Church - Senior UI/UX Developer & AI Specialist",
     description:
-      "Senior Front-End Developer and UI/UX Designer specializing in AI integration and Extended Reality (XR) experiences.",
-    images: ["/images/og-image.png"],
+      "Full-stack developer specializing in AI integration. Creator of SwiftSnapAI. Building intelligent, scalable solutions.",
+    images: ["/og-image.png"],
   },
+
+  // Additional metadata
+  metadataBase: new URL("https://brandonchurchportfolio.com"),
+  alternates: {
+    canonical: "/",
+  },
+
+  // Robots
   robots: {
     index: true,
     follow: true,
@@ -60,83 +80,23 @@ export const metadata = {
       "max-snippet": -1,
     },
   },
-  manifest: "/manifest.json",
-  icons: {
-    icon: [
-      { url: "/favicon.ico" },
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-    ],
-    apple: [{ url: "/apple-touch-icon.png" }],
-  },
 };
 
-// Separate viewport export (NEW)
+// These need to be exported separately in App Router
 export const viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: "#6366f1",
+  themeColor: "#0a0118",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
-      <head>
-        {/* Additional meta tags for PWA and mobile */}
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta
-          name="apple-mobile-web-app-status-bar-style"
-          content="black-translucent"
-        />
-        <meta name="format-detection" content="telephone=no" />
-
-        {/* Preconnect to external domains for performance */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-
-        {/* Structured Data for SEO */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              name: "Brandon Church",
-              jobTitle: "Front-End Developer & UI/UX Designer",
-              description:
-                "Senior Front-End Developer specializing in AI integration and XR experiences",
-              url: "https://brandonchurchportfolio.com",
-              sameAs: [
-                // Add your social media URLs here
-                "https://linkedin.com/in/brandonchurch",
-                "https://github.com/brandonchurch",
-              ],
-              skills: [
-                "Front-End Development",
-                "UI/UX Design",
-                "Extended Reality (XR)",
-                "AI Integration",
-                "React",
-                "Next.js",
-                "Three.js",
-              ],
-            }),
-          }}
-        />
-      </head>
-      <body suppressHydrationWarning>
-        <Providers>{children}</Providers>
-
-        {/* Global cursor effects container */}
-        <div id="cursor-portal" />
-
-        {/* Toast/notification container */}
-        <div id="notification-portal" />
+    <html lang="en" className="dark">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-text`}
+      >
+        {children}
       </body>
     </html>
   );
