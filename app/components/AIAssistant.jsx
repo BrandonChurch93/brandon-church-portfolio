@@ -172,7 +172,7 @@ const AIAssistant = () => {
 
   return (
     <>
-      {/* Floating Button - Bigger and better hover */}
+      {/* Floating Button - Higher z-index than navigation (z-[100]) */}
       <AnimatePresence>
         {!isOpen && (
           <motion.button
@@ -184,7 +184,7 @@ const AIAssistant = () => {
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsOpen(true)}
             className={cn(
-              "fixed bottom-6 right-6 z-[80]",
+              "fixed bottom-6 right-6 z-[150]", // Changed from z-[80] to z-[150]
               "w-16 h-16",
               "glass rounded-full",
               "border border-white/10",
@@ -212,7 +212,7 @@ const AIAssistant = () => {
         )}
       </AnimatePresence>
 
-      {/* Chat Window - With smooth animations */}
+      {/* Chat Window - Higher z-index than navigation */}
       <AnimatePresence mode="wait">
         {isOpen && (
           <motion.div
@@ -225,7 +225,7 @@ const AIAssistant = () => {
               ease: "easeOut",
             }}
             className={cn(
-              "fixed bottom-6 right-6 left-6 sm:left-auto z-[85]",
+              "fixed bottom-6 right-6 left-6 sm:left-auto z-[150]", // Changed from z-[85] to z-[150]
               "w-auto sm:w-full sm:max-w-md",
               "h-[calc(100vh-6rem)] sm:h-[600px] max-h-[85vh]",
               "flex flex-col",
