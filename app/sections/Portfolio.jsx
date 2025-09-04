@@ -105,6 +105,50 @@ const Portfolio = () => {
   // Projects data
   const projects = [
     {
+      id: "ai-cover-letter",
+      title: "AI Cover Letter Generator",
+      tagline: "Smart cover letter generation with real-time AI customization",
+      description:
+        "Professional cover letter generator that transforms resumes and job descriptions into tailored applications. Features glassmorphism UI, multi-model AI selection, and instant export options - turning hours of writing into minutes.",
+      image: "/images/AiCoverLetterGenerator.png",
+      techStack: [
+        "React 18",
+        "Next.js 15.5",
+        "TypeScript",
+        "Tailwind CSS v3",
+        "OpenAI GPT-4o-mini",
+        "ChatGPT-5-mini",
+        "React-to-PDF",
+        "jsPDF/docx",
+        "LZ-String",
+        "Vercel",
+      ],
+      liveUrl: "https://ai-cover-letter-generator-ten.vercel.app/",
+      githubUrl: "https://github.com/BrandonChurch93/AICoverLetterGenerator",
+      featured: true,
+      status: "live",
+      problem:
+        "Job seekers spend 30-60 minutes crafting each cover letter, often producing generic content that fails to match job requirements. Traditional templates lack personalization, while manual customization for multiple applications becomes unsustainable. Most AI tools offer one-size-fits-all solutions without considering tone, industry, or specific achievements.",
+      solution:
+        "AI Cover Letter Generator creates perfectly tailored cover letters in under 30 seconds. Users paste their resume and job description, select optional tone preferences, and receive professionally formatted letters. Built with a 2030-inspired glassmorphism interface, it offers multi-model AI selection (GPT-4o-mini for quality, GPT-3.5-turbo for speed), real-time editing, and instant export to PDF/Word/Text formats.",
+      features: [
+        "Multi-model AI selection for quality vs speed optimization",
+        "Real-time compression with LZ-String for efficient API usage",
+        "Supporting information fields for skills, achievements, and tone preferences",
+        "In-line editing with live preview and word count",
+        "One-click regeneration for variations",
+        "SessionStorage persistence prevents data loss",
+        "Export to PDF, Word (.docx), and plain text formats",
+        "Glassmorphism UI with floating orb animations",
+        "Mobile-responsive design with magnetic button interactions",
+      ],
+      metrics: {
+        "Generation Time": "< 30s",
+        "AI Models": "2",
+        "Export Formats": "3",
+      },
+    },
+    {
       id: "snapshot-ai",
       title: "SwiftSnapAI",
       tagline: "AI-powered Chrome extension for instant content analysis",
@@ -124,7 +168,7 @@ const Portfolio = () => {
       liveUrl:
         "https://swiftsnapai-3n5uijgvg-brandon-churchs-projects.vercel.app/",
       githubUrl: "https://github.com/BrandonChurch93/swiftsnapai",
-      featured: true,
+      featured: false,
       status: "live",
       problem:
         "Context switching kills productivity. Users spend 5-7 steps copying text, switching tabs, pasting into ChatGPT, waiting, then copying back. Research tasks take 30+ minutes of repetitive actions.",
