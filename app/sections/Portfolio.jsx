@@ -103,7 +103,55 @@ const Portfolio = () => {
   }, [selectedProject]);
 
   // Projects data
+  // Projects data
   const projects = [
+    {
+      id: "micro-interactions-library",
+      title: "Micro-Interactions Library",
+      tagline: "15 WCAG-compliant components ready to drop into any React app",
+      description:
+        "A curated collection of beautiful, accessible micro-interactions built with Next.js 14 and TypeScript. Features one-click copy, dark mode, ⌘+K search, and WCAG 2.1 AA compliance - transforming UI development from hours to minutes.",
+      image: "/images/MicroInteractions.svg",
+      techStack: [
+        "Next.js 14",
+        "TypeScript",
+        "React 18",
+        "CSS Modules",
+        "Web Animations API",
+        "cmdk",
+        "Shiki",
+        "react-aria",
+        "Vercel",
+      ],
+      liveUrl: "https://micro-interactions-library.vercel.app/",
+      githubUrl:
+        "https://github.com/BrandonChurch93/micro-interactions-library",
+      featured: true,
+      status: "live",
+      problem:
+        "Developers waste 2-4 hours per component recreating common UI patterns like loading states, toast notifications, and focus indicators from scratch. Most component libraries lock you into entire frameworks (Material-UI, Chakra), while random CodePen snippets lack accessibility, break in production, and fail WCAG compliance. The choice: spend hours building it yourself or compromise on quality and ship inaccessible UIs.",
+      solution:
+        "Micro-Interactions Library provides 15 self-contained, production-ready components that can be copied into any React project in seconds. Each component includes live interactive demos, syntax-highlighted code with one-click copy, multiple visual variants, and comprehensive accessibility documentation. Built with pure CSS transitions (80%) and Web Animations API (20%) - no npm dependencies required. Just copy, paste, and ship accessible UIs in minutes instead of hours.",
+      features: [
+        "15 micro-interaction components across 4 categories (State Transitions, Click Feedback, Accessibility, Navigation)",
+        "One-click copy with confetti celebration and toast confirmation feedback",
+        "Live interactive demos with real-time variant switching and auto-playing hero showcases",
+        "⌘+K fuzzy search with keyboard navigation for instant component discovery",
+        "WCAG 2.1 AA compliant with comprehensive keyboard navigation and screen reader support",
+        "System-aware dark mode with manual toggle and localStorage persistence",
+        "Syntax highlighting powered by Shiki with TypeScript and CSS module support",
+        "Zero runtime dependencies - pure CSS transitions and native Web Animations API",
+        "Mobile-responsive with optimized touch interactions and reduced motion support",
+        "SEO-optimized with Open Graph tags, Twitter cards, sitemap, and robots.txt",
+        "Production-ready code with TypeScript, ESLint, and Next.js 14 App Router",
+        "Comprehensive documentation with usage notes, best practices, and accessibility tips",
+      ],
+      metrics: {
+        Components: "15",
+        "Build Time": "12-16hrs",
+        Lighthouse: "95+",
+      },
+    },
     {
       id: "ai-cover-letter",
       title: "AI Cover Letter Generator",
@@ -125,7 +173,7 @@ const Portfolio = () => {
       ],
       liveUrl: "https://ai-cover-letter-generator-ten.vercel.app/",
       githubUrl: "https://github.com/BrandonChurch93/AICoverLetterGenerator",
-      featured: true,
+      featured: false,
       status: "live",
       problem:
         "Job seekers spend 30-60 minutes crafting each cover letter, often producing generic content that fails to match job requirements. Traditional templates lack personalization, while manual customization for multiple applications becomes unsustainable. Most AI tools offer one-size-fits-all solutions without considering tone, industry, or specific achievements.",
@@ -176,6 +224,13 @@ const Portfolio = () => {
         "SwiftSnapAI enables Alt+drag text selection or Shift+drag image capture with instant AI analysis. Built complete SaaS with authentication, payments, and 2-3 second response times vs competitors' 18-23 seconds.",
       features: [
         "Alt+drag text / Shift+drag image for instant AI analysis",
+        "2-3 second response times (vs 18-23s competitors)",
+        "Chrome Extension Manifest V3 architecture",
+        "Full SaaS infrastructure with Supabase authentication",
+        "Stripe integration for subscription management",
+        "Edge-optimized API routes for low latency",
+        "Token usage tracking and rate limiting",
+        "Real-time sync between extension and web dashboard",
         "Multi-language support (6 languages) with i18n",
         "Stripe subscription tiers (Free/Pro/Power)",
         "Magic link authentication with anonymous upgrade path",
@@ -189,62 +244,43 @@ const Portfolio = () => {
       },
     },
     {
-      id: "fileforge",
-      title: "FileForge",
-      tagline: "Browser-based file optimization with zero server uploads",
+      id: "inbox-hero",
+      title: "Inbox Hero AI",
+      tagline: "AI email assistant that drafts replies in your voice",
       description:
-        "Professional file processing entirely in-browser. Smart compression for email platforms, format conversion, PDF manipulation, and web optimization - all with complete privacy.",
-      image: "/images/fileforge.png",
+        "Chrome extension that analyzes your writing style and generates contextual email replies. Reduces 10min reply time to 30sec with voice-matched responses.",
+      image: "/images/InboxHeroAI.png",
       techStack: [
         "React 18",
-        "Vite",
-        "React Router v6",
-        "Canvas API",
-        "pdf-lib",
-        "JSZip",
-        "browser-image-compression",
-        "Web Workers",
+        "TypeScript",
+        "Chrome Extension V3",
+        "OpenAI GPT-4",
+        "Supabase",
+        "Tailwind CSS",
       ],
-      liveUrl: "https://file-forge-lovat.vercel.app/",
-      githubUrl: "https://github.com/BrandonChurch93/fileforge",
-      status: "live",
+      liveUrl: null,
+      githubUrl: "https://github.com/BrandonChurch93/InboxHeroAI",
+      featured: false,
+      status: "in-development",
       problem:
-        "Users need quick file operations but face privacy concerns with online tools, slow processing, file size limits, and expensive software. Most solutions upload files to servers, risking data exposure and requiring trust in third-party handling.",
+        "Professionals spend 2-3 hours daily on email, with each reply taking 5-10 minutes. Generic AI tools produce robotic responses that require heavy editing. Users need replies that match their tone, context, and relationship with the recipient.",
       solution:
-        "FileForge processes everything client-side using Web APIs and Canvas. Five specialized journeys guide users through smart email compression, format conversion, PDF operations, web optimization, and favicon generation - all with sub-3-second processing and files never leaving the browser.",
+        "Inbox Hero AI learns your writing style from past emails and generates contextual replies directly in Gmail. The extension analyzes conversation history, tone, and relationship context to draft responses that sound like you wrote them. Users can regenerate with different tones (professional, casual, brief) and edit before sending.",
       features: [
-        "100% client-side processing - complete privacy guaranteed",
-        "Smart platform detection for Gmail/Discord/Outlook limits",
-        "Contextual intelligence warns about transparency loss in conversions",
-        "Glassmorphism UI with smooth step-by-step workflows",
-        "Progressive enhancement based on browser capabilities",
-        "Memory-conscious batch processing prevents overflow",
+        "Writing style analysis from past sent emails",
+        "Context-aware replies based on conversation history",
+        "Multiple tone options (professional, casual, brief, friendly)",
+        "One-click regeneration with alternative phrasings",
+        "In-line editing within Gmail interface",
+        "Relationship detection (colleague, client, friend)",
+        "Supabase authentication and user preferences",
+        "Chrome Extension V3 for Gmail integration",
       ],
       metrics: {
-        Processing: "< 3s",
-        Privacy: "100%",
-        "File Limit": "100MB",
+        "Time Saved": "80%",
+        "Reply Time": "30s",
+        "Tone Match": "95%",
       },
-    },
-    {
-      id: "inboxhero-ai",
-      title: "InboxHeroAI",
-      tagline: "AI assistant that reads your emails across all accounts",
-      description:
-        "Never miss important emails again. AI-powered inbox management across multiple email accounts with intelligent prioritization.",
-      image: "/images/placeholder.png",
-      techStack: ["Next.js", "OpenAI", "OAuth 2.0", "Node.js"],
-      status: "coming-soon",
-    },
-    {
-      id: "cyberheist-2089",
-      title: "CyberHeist2089",
-      tagline: "Futuristic heist game in your browser",
-      description:
-        "Web-based cyberpunk heist game with immersive 3D graphics and multiplayer capabilities.",
-      image: "/images/placeholder.png",
-      techStack: ["Three.js", "WebGL", "Socket.io", "React"],
-      status: "coming-soon",
     },
   ];
 
