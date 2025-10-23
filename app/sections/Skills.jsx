@@ -309,7 +309,7 @@ const Skills = () => {
               className="text-base sm:text-xl md:text-2xl text-white/70 max-w-2xl mx-auto"
             >
               <ScrollTriggeredUnderline>
-                Frontend, Backend, AI – All in one developer
+                Frontend specialist with full-stack capability
               </ScrollTriggeredUnderline>
             </MobileMotionWrapper>
           </MobileMotionWrapper>

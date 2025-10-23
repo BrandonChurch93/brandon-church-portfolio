@@ -315,7 +315,7 @@ const Portfolio = () => {
                 className="text-base sm:text-xl md:text-2xl text-white/70 max-w-2xl mx-auto"
               >
                 <ScrollTriggeredUnderline>
-                  Innovative AI solutions, exceptional user experiences
+                  Clean code, accessible design, creative experiments
                 </ScrollTriggeredUnderline>
               </MobileMotionWrapper>
             </MobileMotionWrapper>

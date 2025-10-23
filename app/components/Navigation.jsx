@@ -212,8 +212,8 @@ const Navigation = () => {
                 <Button
                   variant="secondary"
                   size="sm"
-                  href="/downloads/BrandonChurchResume.pdf"
-                  download="BrandonChurchResume.pdf"
+                  href="/downloads/BrandonChurch_Resume_ATS.docx"
+                  download="BrandonChurch_Resume_ATS.docx"
                   icon={<Download size={16} />}
                   className={cn(
                     "border-white/20 text-white hover:text-[#ff3f81]",
@@ -343,7 +343,7 @@ const Navigation = () => {
               <Button
                 variant="primary"
                 size="md"
-                href="/downloads/BrandonChurchResume.pdf"
+                href="/downloads/BrandonChurch_Resume_ATS.docx"
                 download
                 icon={<Download size={18} />}
                 fullWidth

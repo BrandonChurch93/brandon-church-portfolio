@@ -18,9 +18,9 @@ const Hero = () => {
   const controls = useAnimation();
 
   const phrases = [
-    "Full-Stack Developer & AI Specialist",
-    "UI/UX Designer & WCAG Expert",
-    "10+ Years Building Enterprise Solutions",
+    "Senior Frontend Engineer",
+    "Accessibility & Performance Expert",
+    "10+ Years Building at Scale",
   ];
 
   useEffect(() => {
@@ -197,10 +197,12 @@ const Hero = () => {
               variants={itemVariants}
               className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 max-w-3xl leading-relaxed"
             >
-              Senior UI/UX developer and AI prompt engineering expert with 10+
-              years of experience. I've architected multi-million dollar
-              applications and led enterprise teams. Now I'm leveraging AI to
-              build innovative solutions faster and smarter than ever before.
+              Senior Frontend Engineer with 10+ years building complex systems
+              at scale. I've shipped federal applications processing billions,
+              maintained perfect WCAG accessibility across every project, and
+              rescued a failing multimillion-dollar contract in two weeks. I
+              think like a founder, code like an engineer, and step up when
+              projects are on fire.
             </motion.p>
 
             {/* CTA Buttons - Stack on mobile */}
@@ -226,8 +228,8 @@ const Hero = () => {
               <Button
                 variant="secondary"
                 size={isMobile ? "md" : "lg"}
-                href="/downloads/BrandonChurchResume.pdf"
-                download="BrandonChurchResume.pdf"
+                href="/downloads/BrandonChurch_Resume_ATS.docx"
+                download="BrandonChurch_Resume_ATS.docx"
                 className={cn(
                   "min-w-[200px]",
                   "border-white/20 text-white hover:text-[#ff3f81]",
