@@ -12,7 +12,6 @@ export const metadata = {
     "Design Engineer. One-person product team. I design, build, and ship from concept to production.",
   authors: [{ name: "Brandon Church" }],
   creator: "Brandon Church",
-  metadataBase: new URL(siteUrl),
   alternates: {
     canonical: "/",
   },
@@ -24,7 +23,7 @@ export const metadata = {
     siteName: "Brandon Church",
     images: [
       {
-        url: "/opengraph-image",
+        url: "https://brandonchurchportfolio.com/opengraph-image",
         width: 1200,
         height: 630,
         alt: "Brandon Church - Design Engineer",
@@ -39,7 +38,7 @@ export const metadata = {
     title: "Brandon Church | Design Engineer",
     description:
       "One-person product team. I design, build, and ship from concept to production.",
-    images: ["/opengraph-image"],
+    images: ["https://brandonchurchportfolio.com/opengraph-image"],
   },
   robots: {
     index: true,

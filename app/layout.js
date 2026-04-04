@@ -24,6 +24,7 @@ const cormorantGaramond = Cormorant_Garamond({
 });
 
 export const metadata = {
+  metadataBase: new URL("https://brandonchurchportfolio.com"),
   icons: {
     icon: { url: "/favicon.svg", type: "image/svg+xml" },
   },
