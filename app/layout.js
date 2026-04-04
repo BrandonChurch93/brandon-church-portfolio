@@ -63,7 +63,7 @@ export default function RootLayout({ children }) {
           <Nav />
           {children}
           <Footer />
-          <AIAssistant />
+          {/* <AIAssistant /> */}
         </div>
       </body>
     </html>
