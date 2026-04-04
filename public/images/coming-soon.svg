@@ -1,0 +1,40 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" fill="#0C0A09"/>
+
+  <!-- Subtle radial glow -->
+  <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#D4A574" stop-opacity="0.08"/>
+    <stop offset="100%" stop-color="#D4A574" stop-opacity="0"/>
+  </radialGradient>
+  <rect width="1200" height="800" fill="url(#glow)"/>
+
+  <!-- Border accent -->
+  <rect x="60" y="60" width="1080" height="680" rx="8" stroke="#D4A574" stroke-opacity="0.15" stroke-width="1" fill="none"/>
+
+  <!-- Corner accents -->
+  <line x1="60" y1="100" x2="60" y2="60" stroke="#D4A574" stroke-opacity="0.5" stroke-width="1.5"/>
+  <line x1="60" y1="60" x2="100" y2="60" stroke="#D4A574" stroke-opacity="0.5" stroke-width="1.5"/>
+  <line x1="1100" y1="60" x2="1140" y2="60" stroke="#D4A574" stroke-opacity="0.5" stroke-width="1.5"/>
+  <line x1="1140" y1="60" x2="1140" y2="100" stroke="#D4A574" stroke-opacity="0.5" stroke-width="1.5"/>
+  <line x1="1140" y1="700" x2="1140" y2="740" stroke="#D4A574" stroke-opacity="0.5" stroke-width="1.5"/>
+  <line x1="1140" y1="740" x2="1100" y2="740" stroke="#D4A574" stroke-opacity="0.5" stroke-width="1.5"/>
+  <line x1="100" y1="740" x2="60" y2="740" stroke="#D4A574" stroke-opacity="0.5" stroke-width="1.5"/>
+  <line x1="60" y1="740" x2="60" y2="700" stroke="#D4A574" stroke-opacity="0.5" stroke-width="1.5"/>
+
+  <!-- Horizontal rule -->
+  <line x1="480" y1="370" x2="720" y2="370" stroke="#D4A574" stroke-opacity="0.25" stroke-width="1"/>
+
+  <!-- COMING SOON text -->
+  <text x="600" y="415" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="42" font-weight="400" letter-spacing="12" fill="#D4A574" fill-opacity="0.7">COMING SOON</text>
+
+  <!-- Horizontal rule below -->
+  <line x1="480" y1="440" x2="720" y2="440" stroke="#D4A574" stroke-opacity="0.25" stroke-width="1"/>
+
+  <!-- Subtle diamond accent -->
+  <g transform="translate(600, 340)" opacity="0.4">
+    <rect x="-4" y="-4" width="8" height="8" transform="rotate(45)" fill="#D4A574"/>
+  </g>
+  <g transform="translate(600, 470)" opacity="0.4">
+    <rect x="-4" y="-4" width="8" height="8" transform="rotate(45)" fill="#D4A574"/>
+  </g>
+</svg>

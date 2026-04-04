@@ -498,6 +498,3 @@ textarea {
     line-height: 1.2 !important;
   }
 }
-
-/* Import mobile fixes only - no animations */
-@import "./styles/mobile-fixes-final.css";
