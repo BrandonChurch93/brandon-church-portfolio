@@ -53,6 +53,8 @@ const AIAssistant = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
+  const [chatBottom, setChatBottom] = useState(48);
+
   // Body scroll lock on mobile
   useEffect(() => {
     if (isOpen && isMobile) {
@@ -61,6 +63,19 @@ const AIAssistant = () => {
       document.body.style.overflow = "";
     }
     return () => { document.body.style.overflow = ""; };
+  }, [isOpen, isMobile]);
+
+  // Handle mobile keyboard resizing
+  useEffect(() => {
+    if (!isOpen || !isMobile || !window.visualViewport) return;
+
+    const handleResize = () => {
+      const keyboardHeight = window.innerHeight - window.visualViewport.height;
+      setChatBottom(keyboardHeight > 0 ? keyboardHeight + 8 : 48);
+    };
+
+    window.visualViewport.addEventListener("resize", handleResize);
+    return () => window.visualViewport.removeEventListener("resize", handleResize);
   }, [isOpen, isMobile]);
 
   // Focus input when chat opens
@@ -165,14 +180,15 @@ const AIAssistant = () => {
             transition={{ type: "tween", duration: 0.3, ease: "easeOut" }}
             style={{
               position: "fixed",
-              bottom: "24px",
-              right: "24px",
-              left: isMobile ? "24px" : "auto",
+              bottom: isMobile ? `${chatBottom}px` : "24px",
+              right: isMobile ? "16px" : "24px",
+              left: isMobile ? "16px" : "auto",
               zIndex: 9995,
               width: isMobile ? "auto" : "100%",
               maxWidth: isMobile ? "none" : "420px",
-              height: isMobile ? "calc(100vh - 6rem)" : "580px",
-              maxHeight: "85vh",
+              height: isMobile ? `calc(100svh - ${chatBottom + 80}px)` : "580px",
+              maxHeight: isMobile ? "75vh" : "85vh",
+              transition: "bottom 0.15s ease, height 0.15s ease",
               display: "flex",
               flexDirection: "column",
               borderRadius: "var(--v2-radius-xl)",
