@@ -11,8 +11,9 @@ export function generateStaticParams() {
   }));
 }
 
-export function generateMetadata({ params }) {
-  const project = getProject(params.slug);
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const project = getProject(slug);
   if (!project) return {};
 
   return {
@@ -21,11 +22,12 @@ export function generateMetadata({ params }) {
   };
 }
 
-export default function ProjectPage({ params }) {
-  const project = getProject(params.slug);
+export default async function ProjectPage({ params }) {
+  const { slug } = await params;
+  const project = getProject(slug);
   if (!project) notFound();
 
-  const { prev, next } = getAdjacentProjects(params.slug);
+  const { prev, next } = getAdjacentProjects(slug);
 
   return (
       <main style={{ position: "relative", zIndex: 1 }}>

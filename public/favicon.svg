@@ -1,52 +1,34 @@
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <!-- Background dark rounded square for better visibility at small sizes -->
-  <rect width="512" height="512" rx="96" fill="#0a0118"></rect>
-  
-  <!-- Definitions -->
-  <defs>
-    <linearGradient id="SvgjsLinearGradient1014" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ff3f81"></stop>
-      <stop offset="100%" stop-color="#a78bfa"></stop>
-    </linearGradient>
-    
-    <!-- Neon glow filter -->
-    <filter id="SvgjsFilter1013" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="8" result="coloredBlur"></feGaussianBlur>
-      <feMerge>
-        <feMergeNode in="coloredBlur"></feMergeNode>
-        <feMergeNode in="SourceGraphic"></feMergeNode>
-      </feMerge>
-    </filter>
-    
-    <!-- Text shadow glow -->
-    <filter id="SvgjsFilter1012" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="12"></feGaussianBlur>
-      <feOffset dx="0" dy="0" result="offsetblur"></feOffset>
-      <feFlood flood-color="#ff3f81" flood-opacity="0.8"></feFlood>
-      <feComposite in2="offsetblur" operator="in"></feComposite>
-      <feComponentTransfer>
-        <feFuncA type="linear" slope="0.8"></feFuncA>
-      </feComponentTransfer>
-      <feMerge>
-        <feMergeNode></feMergeNode>
-        <feMergeNode in="SourceGraphic"></feMergeNode>
-      </feMerge>
-    </filter>
-  </defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 76" width="64" height="76">
+  <!-- TOP FACE - lightest, 1 amber accent -->
+  <path d="M32 4 L42 10 L32 16 L22 10 Z" fill="#57534E" stroke="#44403C" stroke-width="0.8"/>
+  <path d="M42 10 L52 16 L42 22 L32 16 Z" fill="#57534E" stroke="#44403C" stroke-width="0.8"/>
+  <path d="M52 16 L62 22 L52 28 L42 22 Z" fill="#57534E" stroke="#44403C" stroke-width="0.8"/>
+  <path d="M22 10 L32 16 L22 22 L12 16 Z" fill="#57534E" stroke="#44403C" stroke-width="0.8"/>
+  <path d="M32 16 L42 22 L32 28 L22 22 Z" fill="#D4A574" stroke="#44403C" stroke-width="0.8"/>
+  <path d="M42 22 L52 28 L42 34 L32 28 Z" fill="#57534E" stroke="#44403C" stroke-width="0.8"/>
+  <path d="M12 16 L22 22 L12 28 L2 22 Z" fill="#57534E" stroke="#44403C" stroke-width="0.8"/>
+  <path d="M22 22 L32 28 L22 34 L12 28 Z" fill="#57534E" stroke="#44403C" stroke-width="0.8"/>
+  <path d="M32 28 L42 34 L32 40 L22 34 Z" fill="#57534E" stroke="#44403C" stroke-width="0.8"/>
 
-  <!-- Outer ring -->
-  <circle cx="256" cy="256" r="220" stroke="url(#bc-gradient)" stroke-width="12" fill="none" opacity="0.5"></circle>
+  <!-- LEFT FACE - medium, 1 amber accent -->
+  <path d="M2 22 L12 28 L12 40 L2 34 Z" fill="#3D3835" stroke="#2A2523" stroke-width="0.8"/>
+  <path d="M2 34 L12 40 L12 52 L2 46 Z" fill="#3D3835" stroke="#2A2523" stroke-width="0.8"/>
+  <path d="M2 46 L12 52 L12 64 L2 58 Z" fill="#3D3835" stroke="#2A2523" stroke-width="0.8"/>
+  <path d="M12 28 L22 34 L22 46 L12 40 Z" fill="#3D3835" stroke="#2A2523" stroke-width="0.8"/>
+  <path d="M12 40 L22 46 L22 58 L12 52 Z" fill="#D4A574" stroke="#2A2523" stroke-width="0.8"/>
+  <path d="M12 52 L22 58 L22 70 L12 64 Z" fill="#3D3835" stroke="#2A2523" stroke-width="0.8"/>
+  <path d="M22 34 L32 40 L32 52 L22 46 Z" fill="#3D3835" stroke="#2A2523" stroke-width="0.8"/>
+  <path d="M22 46 L32 52 L32 64 L22 58 Z" fill="#3D3835" stroke="#2A2523" stroke-width="0.8"/>
+  <path d="M22 58 L32 64 L32 76 L22 70 Z" fill="#3D3835" stroke="#2A2523" stroke-width="0.8"/>
 
-  <!-- Inner circle with glass effect -->
-  <circle cx="256" cy="256" r="200" fill="rgba(255, 255, 255, 0.05)" stroke="rgba(255, 255, 255, 0.1)" stroke-width="4"></circle>
-
-  <!-- BC Text -->
-  <text x="256" y="256" text-anchor="middle" dominant-baseline="central" fill="white" font-size="180" font-weight="bold" font-family="system-ui, -apple-system, sans-serif" letter-spacing="-8" filter="url(#textGlow)">
-    BC
-  </text>
-
-  <!-- Accent dot -->
-  <circle cx="380" cy="132" r="24" fill="#ff3f81" opacity="0.8"></circle>
-</svg><style>@media (prefers-color-scheme: light) { :root { filter: none; } }
-@media (prefers-color-scheme: dark) { :root { filter: none; } }
-</style></svg>
+  <!-- RIGHT FACE - darkest, 1 amber accent -->
+  <path d="M32 40 L42 34 L42 46 L32 52 Z" fill="#4A4543" stroke="#2A2523" stroke-width="0.8"/>
+  <path d="M32 52 L42 46 L42 58 L32 64 Z" fill="#4A4543" stroke="#2A2523" stroke-width="0.8"/>
+  <path d="M32 64 L42 58 L42 70 L32 76 Z" fill="#4A4543" stroke="#2A2523" stroke-width="0.8"/>
+  <path d="M42 34 L52 28 L52 40 L42 46 Z" fill="#4A4543" stroke="#2A2523" stroke-width="0.8"/>
+  <path d="M42 46 L52 40 L52 52 L42 58 Z" fill="#4A4543" stroke="#2A2523" stroke-width="0.8"/>
+  <path d="M42 58 L52 52 L52 64 L42 70 Z" fill="#D4A574" stroke="#2A2523" stroke-width="0.8"/>
+  <path d="M52 28 L62 22 L62 34 L52 40 Z" fill="#4A4543" stroke="#2A2523" stroke-width="0.8"/>
+  <path d="M52 40 L62 34 L62 46 L52 52 Z" fill="#4A4543" stroke="#2A2523" stroke-width="0.8"/>
+  <path d="M52 52 L62 46 L62 58 L52 64 Z" fill="#4A4543" stroke="#2A2523" stroke-width="0.8"/>
+</svg>

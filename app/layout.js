@@ -23,6 +23,12 @@ const cormorantGaramond = Cormorant_Garamond({
   style: ["normal", "italic"],
 });
 
+export const metadata = {
+  icons: {
+    icon: { url: "/favicon.svg", type: "image/svg+xml" },
+  },
+};
+
 export const viewport = {
   width: "device-width",
   initialScale: 1,
