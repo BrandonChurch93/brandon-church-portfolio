@@ -5,7 +5,7 @@ export const projects = [
     tagline: "A full marketing site for my studio, Modern Softworks. Custom design system from scratch, no UI framework. 22 routes, MDX content pipeline, and enterprise security headers. Accessibility enforced as a hard build failure.",
     featured: true,
     image: "/images/ModernSoftworks.png",
-    liveUrl: "https://modern-softworks.vercel.app/",
+    liveUrl: "https://www.modernsoftworks.com",
     githubUrl: null,
     techStack: ["Next.js 15", "React 19", "TypeScript", "GSAP", "OGL", "MDX", "Resend", "Vercel"],
     metrics: [

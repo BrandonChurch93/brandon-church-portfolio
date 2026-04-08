@@ -336,7 +336,7 @@ function CubeScene() {
       }
       return;
     }
-    anim.progress = Math.min(anim.progress + anim.speed, 1);
+    anim.progress = Math.min(anim.progress + delta * 0.5, 1);
     if (anim.progress >= 1) {
       commitMove();
       anim.isAnimating = false;
