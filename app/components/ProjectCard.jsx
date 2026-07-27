@@ -78,7 +78,7 @@ export default function ProjectCard({ project, index = 0 }) {
             marginBottom: "16px",
           }}
         >
-          {project.techStack.slice(0, isFeatured ? 5 : 4).map((tech) => (
+          {(project.cardTechStack || project.techStack.slice(0, isFeatured ? 5 : 4)).map((tech) => (
             <span key={tech} className="v2-pill v2-pill-neutral" style={{ fontSize: "11px", padding: "4px 10px" }}>
               {tech}
             </span>

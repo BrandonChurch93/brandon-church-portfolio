@@ -196,53 +196,6 @@ const Portfolio = () => {
         "Export Formats": "3",
       },
     },
-    {
-      id: "snapshot-ai",
-      title: "SwiftSnapAI",
-      tagline: "AI-powered Chrome extension for instant content analysis",
-      description:
-        "Select text or images from any webpage for immediate AI analysis. Full-stack SaaS with Stripe subscriptions, turning 30min research into 30sec.",
-      image: "/images/snapShotAI.png",
-      techStack: [
-        "React 18",
-        "TypeScript",
-        "Next.js 14",
-        "Chrome Extension V3",
-        "OpenAI GPT-4",
-        "Supabase",
-        "Stripe",
-        "Vercel",
-      ],
-      liveUrl:
-        "https://swiftsnapai-3n5uijgvg-brandon-churchs-projects.vercel.app/",
-      githubUrl: "https://github.com/BrandonChurch93/swiftsnapai",
-      featured: false,
-      status: "live",
-      problem:
-        "Context switching kills productivity. Users spend 5-7 steps copying text, switching tabs, pasting into ChatGPT, waiting, then copying back. Research tasks take 30+ minutes of repetitive actions.",
-      solution:
-        "SwiftSnapAI enables Alt+drag text selection or Shift+drag image capture with instant AI analysis. Built complete SaaS with authentication, payments, and 2-3 second response times vs competitors' 18-23 seconds.",
-      features: [
-        "Alt+drag text / Shift+drag image for instant AI analysis",
-        "2-3 second response times (vs 18-23s competitors)",
-        "Chrome Extension Manifest V3 architecture",
-        "Full SaaS infrastructure with Supabase authentication",
-        "Stripe integration for subscription management",
-        "Edge-optimized API routes for low latency",
-        "Token usage tracking and rate limiting",
-        "Real-time sync between extension and web dashboard",
-        "Multi-language support (6 languages) with i18n",
-        "Stripe subscription tiers (Free/Pro/Power)",
-        "Magic link authentication with anonymous upgrade path",
-        "Real-time usage tracking with LRU rate limiting",
-        "Service worker architecture for background processing",
-      ],
-      metrics: {
-        "Response Time": "2-3s",
-        "vs Competitors": "18-23s",
-        "Time Saved": "90%",
-      },
-    },
   ];
 
   return (
