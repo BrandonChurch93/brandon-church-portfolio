@@ -243,45 +243,6 @@ const Portfolio = () => {
         "Time Saved": "90%",
       },
     },
-    {
-      id: "inbox-hero",
-      title: "Inbox Hero AI",
-      tagline: "AI email assistant that drafts replies in your voice",
-      description:
-        "Chrome extension that analyzes your writing style and generates contextual email replies. Reduces 10min reply time to 30sec with voice-matched responses.",
-      image: "/images/InboxHeroAI.png",
-      techStack: [
-        "React 18",
-        "TypeScript",
-        "Chrome Extension V3",
-        "OpenAI GPT-4",
-        "Supabase",
-        "Tailwind CSS",
-      ],
-      liveUrl: null,
-      githubUrl: "https://github.com/BrandonChurch93/InboxHeroAI",
-      featured: false,
-      status: "in-development",
-      problem:
-        "Professionals spend 2-3 hours daily on email, with each reply taking 5-10 minutes. Generic AI tools produce robotic responses that require heavy editing. Users need replies that match their tone, context, and relationship with the recipient.",
-      solution:
-        "Inbox Hero AI learns your writing style from past emails and generates contextual replies directly in Gmail. The extension analyzes conversation history, tone, and relationship context to draft responses that sound like you wrote them. Users can regenerate with different tones (professional, casual, brief) and edit before sending.",
-      features: [
-        "Writing style analysis from past sent emails",
-        "Context-aware replies based on conversation history",
-        "Multiple tone options (professional, casual, brief, friendly)",
-        "One-click regeneration with alternative phrasings",
-        "In-line editing within Gmail interface",
-        "Relationship detection (colleague, client, friend)",
-        "Supabase authentication and user preferences",
-        "Chrome Extension V3 for Gmail integration",
-      ],
-      metrics: {
-        "Time Saved": "80%",
-        "Reply Time": "30s",
-        "Tone Match": "95%",
-      },
-    },
   ];
 
   return (

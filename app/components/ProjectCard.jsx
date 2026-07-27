@@ -42,7 +42,7 @@ export default function ProjectCard({ project, index = 0 }) {
             letterSpacing: "-0.01em",
           }}
         >
-          {project.title}
+          {project.cardTitle || project.title}
         </h3>
         {isFeatured && (
           <p
@@ -54,6 +54,18 @@ export default function ProjectCard({ project, index = 0 }) {
             }}
           >
             {project.tagline}
+          </p>
+        )}
+        {!isFeatured && project.cardDescription && (
+          <p
+            style={{
+              fontSize: "0.875rem",
+              lineHeight: 1.6,
+              color: "var(--v2-text-secondary)",
+              marginBottom: "16px",
+            }}
+          >
+            {project.cardDescription}
           </p>
         )}
 

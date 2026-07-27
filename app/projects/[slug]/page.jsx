@@ -50,6 +50,18 @@ export default async function ProjectPage({ params }) {
             >
               {project.title}
             </h1>
+            {project.subline && (
+              <p
+                className="v2-body"
+                style={{
+                  marginBottom: "16px",
+                  maxWidth: "600px",
+                  color: "var(--v2-text-secondary)",
+                }}
+              >
+                {project.subline}
+              </p>
+            )}
             <p className="v2-body" style={{ marginBottom: "32px", maxWidth: "600px" }}>
               {project.tagline}
             </p>
@@ -73,7 +85,7 @@ export default async function ProjectPage({ params }) {
                   rel="noopener noreferrer"
                   className="v2-btn v2-btn-secondary"
                 >
-                  GitHub <span className="v2-arrow v2-arrow-external" style={{ fontSize: "12px" }}>↗</span>
+                  {project.githubLabel || "GitHub"} <span className="v2-arrow v2-arrow-external" style={{ fontSize: "12px" }}>↗</span>
                 </a>
               )}
             </div>
