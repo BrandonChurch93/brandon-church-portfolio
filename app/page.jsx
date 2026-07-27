@@ -7,18 +7,18 @@ import ContactSection from "./components/ContactSection";
 const siteUrl = "https://brandonchurchportfolio.com";
 
 export const metadata = {
-  title: "Brandon Church | Design Engineer",
+  title: "Brandon Church | AI Product Engineer",
   description:
-    "Design Engineer. One-person product team. I design, build, and ship from concept to production.",
+    "I design, build, and ship full-stack AI products end to end, on twelve years of UX, accessibility, and frontend leadership.",
   authors: [{ name: "Brandon Church" }],
   creator: "Brandon Church",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Brandon Church | Design Engineer",
+    title: "Brandon Church | AI Product Engineer",
     description:
-      "One-person product team. I design, build, and ship from concept to production.",
+      "I design, build, and ship full-stack AI products end to end, on twelve years of UX, accessibility, and frontend leadership.",
     url: `${siteUrl}`,
     siteName: "Brandon Church",
     images: [
@@ -35,9 +35,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Brandon Church | Design Engineer",
+    title: "Brandon Church | AI Product Engineer",
     description:
-      "One-person product team. I design, build, and ship from concept to production.",
+      "I design, build, and ship full-stack AI products end to end, on twelve years of UX, accessibility, and frontend leadership.",
     images: ["https://brandonchurchportfolio.com/opengraph-image"],
   },
   robots: {
@@ -63,7 +63,7 @@ const jsonLd = {
     url: siteUrl,
     image: `${siteUrl}/images/headshot.png`,
     description:
-      "One-person product team. I design, build, and ship from concept to production.",
+      "I design, build, and ship full-stack AI products end to end, on twelve years of UX, accessibility, and frontend leadership.",
     knowsAbout: [
       "Design Systems",
       "Frontend Engineering",

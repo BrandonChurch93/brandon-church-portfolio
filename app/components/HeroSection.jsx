@@ -61,11 +61,11 @@ export default function HeroSection() {
           <>
             <div style={{ marginBottom: "24px" }}>
               <MaskedLine delay={0.3} duration={0.5}>
-                <p className="v2-eyebrow">Product Builder</p>
+                <p className="v2-eyebrow">Design Engineer</p>
               </MaskedLine>
             </div>
             <SplitText
-              text="Design Engineer"
+              text="AI Product Engineer"
               as="h1"
               className="v2-heading v2-h1"
               delay={0.5}
@@ -81,8 +81,8 @@ export default function HeroSection() {
               }}
               {...blurFadeUp(1.0)}
             >
-              One-person product team. I own design, engineering, and
-              deployment. Concept to production, no handoffs.
+              I design, build, and ship full-stack AI products end to end, on
+              twelve years of UX, accessibility, and frontend leadership.
             </motion.p>
             <motion.div
               style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}
@@ -105,11 +105,11 @@ export default function HeroSection() {
               Brandon Church
             </p>
             <h1 className="v2-heading v2-h1" style={{ marginBottom: "24px" }}>
-              Design Engineer
+              AI Product Engineer
             </h1>
             <p className="v2-body" style={{ marginBottom: "40px" }}>
-              One-person product team. I own design, engineering, and
-              deployment. Concept to production, no handoffs.
+              I design, build, and ship full-stack AI products end to end, on
+              twelve years of UX, accessibility, and frontend leadership.
             </p>
             <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
               <a href="#projects" onClick={(e) => { e.preventDefault(); document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" }); }} className="v2-btn v2-btn-primary">

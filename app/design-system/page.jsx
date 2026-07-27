@@ -134,7 +134,7 @@ export default function DesignSystemPage() {
               <div>
                 <p style={{ fontSize: "11px", color: c.textDim, fontFamily: mono, marginBottom: "8px" }}>body — Geist · 1.125rem (18px) · line-height 1.65</p>
                 <p style={{ fontSize: "1.125rem", lineHeight: 1.65, color: c.textSecondary, maxWidth: "640px" }}>
-                  I design and build complete software products from concept to production. I operate as a one-person product team, owning architecture, design, implementation, and deployment.
+                  I design, build, and ship full-stack AI products end to end, on twelve years of UX, accessibility, and frontend leadership.
                 </p>
               </div>
             </div>
@@ -150,7 +150,7 @@ export default function DesignSystemPage() {
               <p style={{ fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.1em", color: c.accent, marginBottom: "24px", fontWeight: 500 }}>Brandon Church</p>
               <h1 style={{ fontFamily: heading, fontSize: "clamp(2.5rem, 7vw, 5.5rem)", fontWeight: 500, lineHeight: 0.95, letterSpacing: "-0.03em", marginBottom: "24px" }}>Design Engineer</h1>
               <p style={{ fontSize: "1.125rem", lineHeight: 1.65, color: c.textSecondary, maxWidth: "540px", marginBottom: "40px" }}>
-                I design and build premium software products from concept to production — owning architecture, UI/UX, and deployment as a one-person product team.
+                I design, build, and ship full-stack AI products end to end, on twelve years of UX, accessibility, and frontend leadership.
               </p>
               <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
                 <button style={{ padding: "12px 28px", borderRadius: "8px", background: c.accent, color: c.bg, border: "none", fontSize: "14px", fontWeight: 600, cursor: "pointer", fontFamily: body }}>View My Work</button>

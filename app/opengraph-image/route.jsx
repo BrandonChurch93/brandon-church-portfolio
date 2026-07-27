@@ -100,8 +100,8 @@ export async function GET() {
             display: "flex",
           }}
         >
-          One-person product team. I design, build, and ship from concept to
-          production.
+          I design, build, and ship full-stack AI products end to end, on
+          twelve years of UX, accessibility, and frontend leadership.
         </div>
 
         {/* Bottom border accent */}
