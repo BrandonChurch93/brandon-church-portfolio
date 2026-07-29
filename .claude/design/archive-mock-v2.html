@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Archive Page Mock v1 · /work · Brandon Church Portfolio</title>
+<style>
+  :root{
+    --bg:#0C0A09;
+    --surface:#161311;
+    --surface-2:#1C1815;
+    --line:rgba(245,242,236,.08);
+    --line-strong:rgba(245,242,236,.14);
+    --ink:#F5F2EC;
+    --ink-muted:#A69D8F;
+    --ink-faint:#6E675C;
+    --accent:#E8B679;
+    --accent-ink:#1A130A;
+    --accent-soft:rgba(232,182,121,.10);
+    --note:#C98F4A;
+    --radius:16px;
+    --maxw:1100px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{transition:none !important;animation:none !important}
+  }
+  body{
+    background:var(--bg);color:var(--ink);
+    font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.55;-webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  .mock-badge{
+    position:fixed;bottom:16px;left:16px;z-index:50;
+    background:var(--surface-2);border:1px solid var(--line-strong);
+    border-radius:999px;padding:8px 14px;font-size:12px;color:var(--ink-muted)
+  }
+  .mock-badge b{color:var(--accent);font-weight:600}
+  .note{
+    display:inline-block;font-size:11px;letter-spacing:.02em;
+    color:var(--note);border:1px dashed rgba(201,143,74,.45);
+    border-radius:6px;padding:2px 8px;margin-left:10px;vertical-align:middle;
+    font-family:ui-monospace,monospace;text-transform:uppercase
+  }
+
+  nav{
+    position:sticky;top:0;z-index:40;
+    background:rgba(12,10,9,.82);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line)
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .wordmark{font-weight:650;letter-spacing:-.01em}
+  .nav-links{display:flex;gap:26px;font-size:14px;color:var(--ink-muted)}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-links .current{color:var(--accent)}
+  @media(max-width:760px){.nav-links{display:none}}
+
+  .page-head{padding:84px 0 0}
+  .crumb{font-size:13px;color:var(--ink-faint);margin-bottom:20px}
+  .crumb a{color:var(--ink-muted)}
+  .crumb a:hover{color:var(--ink)}
+  .page-head h1{font-size:clamp(36px,5.5vw,56px);letter-spacing:-.025em;font-weight:700}
+  .page-head p{color:var(--ink-muted);max-width:52ch;margin-top:14px;font-size:16px}
+
+  .filters{
+    display:flex;flex-wrap:wrap;gap:10px;margin:36px 0 40px;
+    border-bottom:1px solid var(--line);padding-bottom:28px
+  }
+  .filter{
+    background:transparent;border:1px solid var(--line-strong);border-radius:999px;
+    color:var(--ink-muted);font-size:13.5px;font-weight:550;padding:9px 18px;cursor:pointer;
+    font-family:inherit;transition:border-color .15s ease,color .15s ease
+  }
+  .filter:hover{border-color:var(--accent);color:var(--ink)}
+  .filter[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+  .filter .count{opacity:.65;font-weight:400;margin-left:5px}
+
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding-bottom:96px}
+  @media(max-width:940px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:640px){.grid{grid-template-columns:1fr}}
+
+  .card{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    overflow:hidden;display:flex;flex-direction:column;
+    transition:transform .18s ease,border-color .18s ease
+  }
+  .card:hover{transform:translateY(-3px);border-color:var(--line-strong)}
+  .card.hidden{display:none}
+  .card-img{
+    background:linear-gradient(160deg,var(--surface-2),#211c17);
+    border-bottom:1px solid var(--line);
+    aspect-ratio:16/9;display:grid;place-items:center;
+    color:var(--ink-faint);font-size:12px;position:relative
+  }
+  .cat-tag{
+    position:absolute;top:12px;left:12px;
+    font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:650;
+    color:var(--accent);background:rgba(12,10,9,.75);border:1px solid rgba(232,182,121,.3);
+    border-radius:6px;padding:3px 8px
+  }
+  .card-body{padding:22px;display:flex;flex-direction:column;gap:12px;flex:1}
+  .card h3{font-size:18px;letter-spacing:-.01em}
+  .card p{color:var(--ink-muted);font-size:14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:6px}
+  .chip{
+    font-size:11.5px;color:var(--ink-muted);border:1px solid var(--line);
+    border-radius:999px;padding:4px 10px;white-space:nowrap
+  }
+  .chip.dashed{border-style:dashed}
+  .card-cta{font-size:13.5px;color:var(--accent);font-weight:600;margin-top:14px}
+
+  .ghost{
+    border:1px dashed var(--line-strong);border-radius:var(--radius);
+    display:grid;place-items:center;min-height:280px;
+    color:var(--ink-faint);font-size:13px;text-align:center;padding:24px
+  }
+
+  footer{
+    border-top:1px solid var(--line);padding:32px 0;text-align:center;
+    color:var(--ink-faint);font-size:13px
+  }
+</style>
+</head>
+<body>
+
+<div class="mock-badge"><b>Archive Mock v2</b> · /work · filters dormant by data</div>
+
+<nav>
+  <div class="wrap nav-inner">
+    <div class="wordmark">Brandon Church</div>
+    <div class="nav-links">
+      <a href="#">Work</a>
+      <a href="#" class="current">All Work</a>
+      <a href="#">About</a>
+      <a href="#">Competencies</a>
+      <a href="#">Contact</a>
+      <a href="#">Resume</a>
+    </div>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap">
+    <div class="crumb"><a href="#">← Home</a></div>
+    <h1>All Work</h1>
+    <p>Everything I have shipped. The homepage keeps the highlights; this is the full catalog, and it grows from here.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="filters" aria-hidden="true" style="justify-content:space-between">
+    <span style="color:var(--ink-faint);font-size:13px;align-self:center">5 projects</span>
+    <span class="note" style="margin-left:0">filter system built but dormant · renders itself when a second category gains entries</span>
+  </div>
+
+  <div class="grid">
+    <a class="card" data-cat="built" href="#">
+      <div class="card-img">screenshot</div>
+      <div class="card-body">
+        <h3>Ask the Claude Docs · RAG Chatbot</h3>
+        <p>A retrieval-augmented chatbot that proves its answers. Citations, honest refusals, and a public eval scoreboard wired into CI.</p>
+        <div class="chips">
+          <span class="chip">RAG Pipeline</span>
+          <span class="chip">CI-Scored Evals</span>
+          <span class="chip">pgvector</span>
+        </div>
+        <div class="card-cta">View Project →</div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="built" href="#">
+      <div class="card-img">screenshot</div>
+      <div class="card-body">
+        <h3>Modern Softworks</h3>
+        <p>A studio site with its design system built from scratch. 22 routes, zero UI framework, accessibility enforced as a hard build failure.</p>
+        <div class="chips">
+          <span class="chip">Design System</span>
+          <span class="chip">MDX Pipeline</span>
+          <span class="chip">GSAP</span>
+        </div>
+        <div class="card-cta">View Project →</div>
+      </div>
+    </a>
+
+
+    <a class="card" data-cat="built" href="#">
+      <div class="card-img">screenshot</div>
+      <div class="card-body">
+        <h3>Hero Animation Builder</h3>
+        <p>An interactive SVG animation builder with 36 live controls, rendered instantly on a staged fintech site. Every design shareable as a URL.</p>
+        <div class="chips">
+          <span class="chip">SVG Animation</span>
+          <span class="chip">Live Controls</span>
+          <span class="chip">Shareable State</span>
+        </div>
+        <div class="card-cta">View Project →</div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="built" href="#">
+      <div class="card-img">screenshot</div>
+      <div class="card-body">
+        <h3>Micro-Interactions Library</h3>
+        <p>A library of production-ready interaction patterns, each one motion-tuned and reduced-motion safe. <span class="note">desc provisional</span></p>
+        <div class="chips">
+          <span class="chip">Web Animations API</span>
+          <span class="chip">CSS Modules</span>
+        </div>
+        <div class="card-cta">View Project →</div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="built" href="#">
+      <div class="card-img">screenshot</div>
+      <div class="card-body">
+        <h3>AI Cover Letter Generator</h3>
+        <p>Tailored cover letters generated from a resume and a job post. <span class="note">archive home · desc provisional</span></p>
+        <div class="chips">
+          <span class="chip">OpenAI API</span>
+          <span class="chip">Prompt Design</span>
+        </div>
+        <div class="card-cta">View Project →</div>
+      </div>
+    </a>
+
+    <div class="ghost" data-cat="all">
+      future work lands here: new builds, and the first concept study when it exists<br>no homepage cost, no layout debt
+      <span class="note" style="margin-top:10px">mock-only slot · not rendered in real build</span>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Designed and built by Brandon Church · © 2026
+</footer>
+
+<script>/* filter logic ships in build, dormant until data activates it */</script>
+
+</body>
+</html>
