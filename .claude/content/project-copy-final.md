@@ -21,9 +21,13 @@ Feed it a resume and a job post, get a letter built to an 80-line, paragraph-by-
 
 ## Section intros
 
-**Selected Work (homepage):** Designed, built, and shipped end to end. These are the highlights.
+**Selected Work (homepage):** The projects that best show what I do right now. Each one shipped, each one live, each one built end to end.
 
-**All Work (/work page header):** Everything I've shipped. The homepage keeps the highlights, this page keeps growing.
+**All Work (/work page header):** The full catalog. Everything here is real and running, and the list grows as I build.
+
+Note: these two lines were stale and were corrected on 2026-07-28 during P1 to match
+`competency-copy-final.md`, which is canonical for section intros alongside the
+checklist's inline copy blocks.
 
 ## Chip lists (max 4, no version numbers, differentiators only)
 

@@ -87,7 +87,7 @@ export async function GET() {
             display: "flex",
           }}
         >
-          Design Engineer
+          AI Product Engineer
         </div>
 
         {/* Subtitle */}
@@ -100,7 +100,7 @@ export async function GET() {
             display: "flex",
           }}
         >
-          I design, build, and ship full-stack AI products end to end, on
+          I design, build, and ship full-stack AI products end to end, built on
           twelve years of UX, accessibility, and frontend leadership.
         </div>
 

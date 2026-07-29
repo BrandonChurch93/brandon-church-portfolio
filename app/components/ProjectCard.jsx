@@ -6,11 +6,19 @@ import Image from "next/image";
 
 const easeOutCubic = [0.33, 1, 0.68, 1];
 
-export default function ProjectCard({ project, index = 0 }) {
+// The uniform card. Every project renders identically here, on the homepage grid and
+// on the /work archive alike. The flagship gets its own component, FlagshipCard.
+// `showCategoryTag` is driven by the archive's data rule: the corner tag only appears
+// once two or more categories are populated. See WorkArchive.
+// `headingLevel` keeps the document outline correct wherever the card is used: h3 under
+// a section h2 on the homepage, h2 when the cards sit directly beneath the /work h1.
+export default function ProjectCard({
+  project,
+  index = 0,
+  showCategoryTag = false,
+  headingLevel: Heading = "h3",
+}) {
   const shouldReduceMotion = useReducedMotion();
-  const isFeatured = project.featured;
-
-  const cardClass = isFeatured ? "v2-card v2-card-glow" : "v2-card v2-card-solid";
 
   const content = (
     <>
@@ -20,43 +28,29 @@ export default function ProjectCard({ project, index = 0 }) {
           src={project.image}
           alt={`Screenshot of ${project.title}`}
           fill
-          sizes={isFeatured ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 100vw, 33vw"}
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           style={{ objectFit: "cover" }}
           className="v2-project-img"
         />
+        {showCategoryTag && project.category && (
+          <span className="v2-cat-tag">{project.category}</span>
+        )}
       </div>
 
       {/* Content */}
       <div>
-        {isFeatured && (
-          <p className="v2-eyebrow" style={{ marginBottom: "8px" }}>
-            Featured Project
-          </p>
-        )}
-        <h3
-          className={isFeatured ? "v2-heading" : "v2-h3"}
+        <Heading
+          className="v2-h3"
           style={{
-            fontSize: isFeatured ? "clamp(1.5rem, 3vw, 2rem)" : "1.25rem",
+            fontSize: "1.25rem",
             fontWeight: 500,
-            marginBottom: isFeatured ? "16px" : "12px",
+            marginBottom: "12px",
             letterSpacing: "-0.01em",
           }}
         >
           {project.cardTitle || project.title}
-        </h3>
-        {isFeatured && (
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.6,
-              color: "var(--v2-text-secondary)",
-              marginBottom: "16px",
-            }}
-          >
-            {project.tagline}
-          </p>
-        )}
-        {!isFeatured && project.cardDescription && (
+        </Heading>
+        {project.cardDescription && (
           <p
             style={{
               fontSize: "0.875rem",
@@ -78,7 +72,7 @@ export default function ProjectCard({ project, index = 0 }) {
             marginBottom: "16px",
           }}
         >
-          {(project.cardTechStack || project.techStack.slice(0, isFeatured ? 5 : 4)).map((tech) => (
+          {(project.cardTechStack || project.techStack.slice(0, 4)).map((tech) => (
             <span key={tech} className="v2-pill v2-pill-neutral" style={{ fontSize: "11px", padding: "4px 10px" }}>
               {tech}
             </span>
@@ -97,7 +91,7 @@ export default function ProjectCard({ project, index = 0 }) {
             gap: "6px",
           }}
         >
-          {project.comingSoon ? "Coming Soon" : project.isExternal ? "View on CodePen" : "View Project"}{" "}
+          {project.comingSoon ? "Coming Soon" : "View Project"}{" "}
           {!project.comingSoon && (
             <span
               className="v2-project-arrow"
@@ -106,7 +100,7 @@ export default function ProjectCard({ project, index = 0 }) {
                 transition: "transform 350ms cubic-bezier(0.16, 1, 0.3, 1)",
               }}
             >
-              {project.isExternal ? "↗" : "→"}
+              →
             </span>
           )}
         </span>
@@ -115,26 +109,20 @@ export default function ProjectCard({ project, index = 0 }) {
   );
 
   const isClickable = !project.comingSoon;
-  const linkProps = project.isExternal
-    ? { href: project.liveUrl, target: "_blank", rel: "noopener noreferrer" }
-    : { href: `/projects/${project.slug}` };
+  const LinkTag = !isClickable ? "div" : Link;
+  const wrapperProps = isClickable ? { href: `/projects/${project.slug}` } : {};
 
-  const LinkTag = !isClickable ? "div" : project.isExternal ? "a" : Link;
-  const wrapperProps = isClickable ? linkProps : {};
-
-  // Wrap in motion for scroll entrance
   if (shouldReduceMotion) {
     return (
       <LinkTag
         {...wrapperProps}
-        className={cardClass}
+        className="v2-card v2-card-solid"
         style={{
           textDecoration: "none",
           color: "inherit",
           display: "block",
+          height: "100%",
           cursor: isClickable ? "pointer" : "default",
-          gridColumn: isFeatured ? "span 2" : "span 1",
-          gridRow: isFeatured ? "span 2" : "span 1",
         }}
       >
         {content}
@@ -152,14 +140,10 @@ export default function ProjectCard({ project, index = 0 }) {
         ease: easeOutCubic,
         delay: index * 0.08,
       }}
-      style={{
-        gridColumn: isFeatured ? "span 2" : "span 1",
-        gridRow: isFeatured ? "span 2" : "span 1",
-      }}
     >
       <LinkTag
         {...wrapperProps}
-        className={cardClass}
+        className="v2-card v2-card-solid"
         style={{
           textDecoration: "none",
           color: "inherit",

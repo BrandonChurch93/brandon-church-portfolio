@@ -1,13 +1,18 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
+// "section" links point at homepage anchors: they smooth-scroll on /, and become
+// real /#anchor navigations everywhere else. "route" links are always real routes.
 const navLinks = [
-  { label: "Projects", href: "#projects" },
-  { label: "About", href: "#about" },
-  { label: "Competencies", href: "#competencies" },
-  { label: "Contact", href: "#contact" },
+  { label: "Work", href: "#selected-work", type: "section" },
+  { label: "All Work", href: "/work", type: "route" },
+  { label: "About", href: "#about", type: "section" },
+  { label: "Competencies", href: "#competencies", type: "section" },
+  { label: "Contact", href: "#contact", type: "section" },
 ];
 
 export default function Nav() {
@@ -19,6 +24,19 @@ export default function Nav() {
   const mobileMenuRef = useRef(null);
   const hamburgerRef = useRef(null);
   const shouldReduceMotion = useReducedMotion();
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
+  // On the homepage a section link scrolls; anywhere else it navigates to /#anchor.
+  const smoothScrolls = (link) => link.type === "section" && isHome;
+
+  const resolvedHref = (link) =>
+    link.type === "route" ? link.href : isHome ? link.href : `/${link.href}`;
+
+  const isLinkActive = (link) =>
+    link.type === "route"
+      ? pathname === link.href
+      : isHome && activeSection === link.href.substring(1);
 
   // Focus trap for mobile menu
   const handleMenuKeyDown = useCallback((e) => {
@@ -53,25 +71,30 @@ export default function Nav() {
 
       setIsScrolled(currentY > 20);
 
-      const sections = navLinks.map((l) => l.href.substring(1));
-      let current = "";
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const el = document.getElementById(sections[i]);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= 120) {
-            current = sections[i];
-            break;
+      // Section highlighting only means anything on the homepage, where the anchors live.
+      if (isHome) {
+        const sections = navLinks
+          .filter((l) => l.type === "section")
+          .map((l) => l.href.substring(1));
+        let current = "";
+        for (let i = sections.length - 1; i >= 0; i--) {
+          const el = document.getElementById(sections[i]);
+          if (el) {
+            const rect = el.getBoundingClientRect();
+            if (rect.top <= 120) {
+              current = sections[i];
+              break;
+            }
           }
         }
+        setActiveSection(current);
       }
-      setActiveSection(current);
       lastScrollY.current = currentY;
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isHome]);
 
   useEffect(() => {
     if (mobileOpen) {
@@ -94,12 +117,7 @@ export default function Nav() {
   const handleNameClick = (e) => {
     e.preventDefault();
     setMobileOpen(false);
-    // If we're on the homepage, scroll to top; otherwise navigate home
-    if (window.location.pathname === "/") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    } else {
-      window.location.href = "/";
-    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -127,43 +145,69 @@ export default function Nav() {
             : "transform 300ms ease, background 300ms ease, border-color 300ms ease, backdrop-filter 300ms ease",
         }}
       >
-        {/* Name */}
-        <a
-          href="#"
-          onClick={handleNameClick}
-          style={{
-            fontFamily: "var(--v2-font-heading)",
-            fontSize: "1.25rem",
-            fontWeight: 500,
-            color: "var(--v2-text)",
-            textDecoration: "none",
-            letterSpacing: "-0.02em",
-            position: "relative",
-            zIndex: 9991,
-          }}
-        >
-          Brandon Church
-        </a>
+        {/* Name · scrolls to top on the homepage, navigates home from any other route */}
+        {isHome ? (
+          <a
+            href="#"
+            onClick={handleNameClick}
+            style={{
+              fontFamily: "var(--v2-font-heading)",
+              fontSize: "1.25rem",
+              fontWeight: 500,
+              color: "var(--v2-text)",
+              textDecoration: "none",
+              letterSpacing: "-0.02em",
+              position: "relative",
+              zIndex: 9991,
+            }}
+          >
+            Brandon Church
+          </a>
+        ) : (
+          <Link
+            href="/"
+            onClick={() => setMobileOpen(false)}
+            style={{
+              fontFamily: "var(--v2-font-heading)",
+              fontSize: "1.25rem",
+              fontWeight: 500,
+              color: "var(--v2-text)",
+              textDecoration: "none",
+              letterSpacing: "-0.02em",
+              position: "relative",
+              zIndex: 9991,
+            }}
+          >
+            Brandon Church
+          </Link>
+        )}
 
         {/* Desktop links */}
         <div className="v2-nav-desktop" style={{ display: "flex", alignItems: "center", gap: "32px" }}>
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={(e) => handleNavClick(e, link.href)}
-              style={{
-                fontSize: "14px",
-                fontWeight: 400,
-                color: activeSection === link.href.substring(1) ? "var(--v2-text)" : "var(--v2-text-muted)",
-                opacity: activeSection === link.href.substring(1) ? 1 : 0.7,
-                textDecoration: "none",
-                transition: "color 200ms ease, opacity 200ms ease",
-              }}
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link) => {
+            const smooth = smoothScrolls(link);
+            const active = isLinkActive(link);
+            const Tag = smooth ? "a" : Link;
+            const linkProps = smooth
+              ? { href: link.href, onClick: (e) => handleNavClick(e, link.href) }
+              : { href: resolvedHref(link), onClick: () => setMobileOpen(false) };
+            return (
+              <Tag
+                key={link.href}
+                {...linkProps}
+                style={{
+                  fontSize: "14px",
+                  fontWeight: 400,
+                  color: active ? "var(--v2-text)" : "var(--v2-text-muted)",
+                  opacity: active ? 1 : 0.7,
+                  textDecoration: "none",
+                  transition: "color 200ms ease, opacity 200ms ease",
+                }}
+              >
+                {link.label}
+              </Tag>
+            );
+          })}
           <a
             href="/downloads/BrandonChurch_Resume.pdf"
             target="_blank"
@@ -295,39 +339,46 @@ export default function Nav() {
               }}
             >
               <nav style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-                {navLinks.map((link, i) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    onClick={(e) => handleNavClick(e, link.href)}
-                    className="v2-mobile-link"
-                    style={{
-                      fontFamily: "var(--v2-font-heading)",
-                      fontSize: "clamp(1.75rem, 6vw, 2.5rem)",
-                      fontWeight: 500,
-                      color: activeSection === link.href.substring(1) ? "var(--v2-accent)" : "var(--v2-text)",
-                      textDecoration: "none",
-                      letterSpacing: "-0.02em",
-                      padding: "12px 0",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "16px",
-                      transition: "color 200ms ease",
-                    }}
-                  >
-                    <span style={{
-                      fontSize: "12px",
-                      fontFamily: "var(--v2-font-mono)",
-                      color: "var(--v2-text-dim)",
-                      fontWeight: 400,
-                      letterSpacing: "0",
-                      minWidth: "20px",
-                    }}>
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    {link.label}
-                  </a>
-                ))}
+                {navLinks.map((link, i) => {
+                  const smooth = smoothScrolls(link);
+                  const active = isLinkActive(link);
+                  const Tag = smooth ? "a" : Link;
+                  const linkProps = smooth
+                    ? { href: link.href, onClick: (e) => handleNavClick(e, link.href) }
+                    : { href: resolvedHref(link), onClick: () => setMobileOpen(false) };
+                  return (
+                    <Tag
+                      key={link.href}
+                      {...linkProps}
+                      className="v2-mobile-link"
+                      style={{
+                        fontFamily: "var(--v2-font-heading)",
+                        fontSize: "clamp(1.75rem, 6vw, 2.5rem)",
+                        fontWeight: 500,
+                        color: active ? "var(--v2-accent)" : "var(--v2-text)",
+                        textDecoration: "none",
+                        letterSpacing: "-0.02em",
+                        padding: "12px 0",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "16px",
+                        transition: "color 200ms ease",
+                      }}
+                    >
+                      <span style={{
+                        fontSize: "12px",
+                        fontFamily: "var(--v2-font-mono)",
+                        color: "var(--v2-text-dim)",
+                        fontWeight: 400,
+                        letterSpacing: "0",
+                        minWidth: "20px",
+                      }}>
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      {link.label}
+                    </Tag>
+                  );
+                })}
               </nav>
 
               <div style={{ marginTop: "48px", paddingTop: "24px", borderTop: "1px solid var(--v2-border)" }}>

@@ -3,7 +3,6 @@ import "./globals.css";
 import "./v2.css";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
-import AIAssistant from "./components/AIAssistant";
 import ScrollProgress from "./components/ScrollProgress";
 
 const geistSans = Geist({
@@ -63,7 +62,6 @@ export default function RootLayout({ children }) {
           <Nav />
           {children}
           <Footer />
-          {/* <AIAssistant /> */}
         </div>
       </body>
     </html>

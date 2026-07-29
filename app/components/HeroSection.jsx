@@ -81,7 +81,7 @@ export default function HeroSection() {
               }}
               {...blurFadeUp(1.0)}
             >
-              I design, build, and ship full-stack AI products end to end, on
+              I design, build, and ship full-stack AI products end to end, built on
               twelve years of UX, accessibility, and frontend leadership.
             </motion.p>
             <motion.div
@@ -90,7 +90,7 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: easeOutCubic, delay: 1.2 }}
             >
-              <a href="#projects" onClick={(e) => { e.preventDefault(); document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" }); }} className="v2-btn v2-btn-primary">
+              <a href="#selected-work" onClick={(e) => { e.preventDefault(); document.getElementById("selected-work")?.scrollIntoView({ behavior: "smooth" }); }} className="v2-btn v2-btn-primary">
                 View My Work{" "}
                 <span className="v2-arrow v2-arrow-right">→</span>
               </a>
@@ -102,17 +102,17 @@ export default function HeroSection() {
         ) : (
           <>
             <p className="v2-eyebrow" style={{ marginBottom: "24px" }}>
-              Brandon Church
+              Design Engineer
             </p>
             <h1 className="v2-heading v2-h1" style={{ marginBottom: "24px" }}>
               AI Product Engineer
             </h1>
             <p className="v2-body" style={{ marginBottom: "40px" }}>
-              I design, build, and ship full-stack AI products end to end, on
+              I design, build, and ship full-stack AI products end to end, built on
               twelve years of UX, accessibility, and frontend leadership.
             </p>
             <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
-              <a href="#projects" onClick={(e) => { e.preventDefault(); document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" }); }} className="v2-btn v2-btn-primary">
+              <a href="#selected-work" onClick={(e) => { e.preventDefault(); document.getElementById("selected-work")?.scrollIntoView({ behavior: "smooth" }); }} className="v2-btn v2-btn-primary">
                 View My Work{" "}
                 <span className="v2-arrow v2-arrow-right">→</span>
               </a>

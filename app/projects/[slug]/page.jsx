@@ -33,7 +33,7 @@ export default async function ProjectPage({ params }) {
       <main style={{ position: "relative", zIndex: 1 }}>
         {/* Back link */}
         <div className="v2-container" style={{ paddingTop: "96px" }}>
-          <Link href="/#projects" className="v2-text-link">
+          <Link href="/#selected-work" className="v2-text-link">
             <span className="v2-link-arrow-left">←</span> Back to Projects
           </Link>
         </div>

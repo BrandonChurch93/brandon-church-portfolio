@@ -4,13 +4,31 @@ import { motion, useReducedMotion } from "framer-motion";
 
 const easeOutCubic = [0.33, 1, 0.68, 1];
 
+// A metric with an `href` renders as a link so live numbers can be pointed at rather
+// than snapshotted into the page, where they would drift out of date.
 function MetricCard({ metric }) {
-  return (
-    <div className="v2-metric-card">
+  const body = (
+    <>
       <span className="v2-metric-value">{metric.value}</span>
       <span className="v2-metric-label">{metric.label}</span>
-    </div>
+    </>
   );
+
+  if (metric.href) {
+    return (
+      <a
+        className="v2-metric-card v2-metric-card-link"
+        href={metric.href}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {body}
+        <span className="v2-metric-arrow" aria-hidden="true">↗</span>
+      </a>
+    );
+  }
+
+  return <div className="v2-metric-card">{body}</div>;
 }
 
 export default function ProjectDetailClient({ metrics }) {

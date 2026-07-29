@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
+import Tidbits from "./Tidbits";
 
 const easeOutCubic = [0.33, 1, 0.68, 1];
 
@@ -31,20 +32,33 @@ export default function AboutSection() {
           }}
         >
           <p>
-            I'm a design engineer who's spent the last decade obsessed
-            with how software looks, feels, and works. I move fluidly
-            between design and code, which means I can own a product
-            end-to-end or plug into a team and immediately close the gap
-            between what's designed and what ships.
+            I&apos;m driven by scientific discovery, human prosperity, and problems at
+            every scale. Some span a federal supply chain. Some fit on a desk. If
+            solving it leaves people better off, I&apos;m interested.
           </p>
           <p>
-            Over the years that's taken me from building career portals
-            for Fortune 500 companies to engineering a system for the
-            U.S. government that tracks over $40 billion in goods
-            annually, to founding Modern Softworks, my own
-            accessibility-first studio serving 40+ clients.
+            What I do about it: design and build products end to end, held to a
+            standard most software skips. The problem has to be real, the solution has
+            to feel effortless for the person on the other side, and the whole thing
+            has to be done with taste. Taste never shows up in a spec, but it&apos;s the
+            difference between software that works and software people actually want to
+            use.
+          </p>
+          <p>
+            Twelve years of that standard looks like career portals for Fortune 500
+            companies, a federal system tracking $43 billion in goods, and a studio I
+            founded that serves 40+ clients, every one of those products accessible to
+            everyone.
+          </p>
+          <p>
+            Now the problems I can&apos;t put down run through AI. I ship AI products end
+            to end, and after hours I build machines: desk robots that talk back, a
+            rover that roams my house. That&apos;s what&apos;s next, putting AI to work on
+            real problems, in software and in the physical world.
           </p>
         </div>
+
+        <Tidbits />
       </div>
 
       {/* Photo */}
@@ -67,7 +81,7 @@ export default function AboutSection() {
         >
           <Image
             src="/images/headshot.png"
-            alt="Brandon Church, Design Engineer"
+            alt="Brandon Church, AI Product Engineer"
             fill
             sizes="(max-width: 768px) 200px, 320px"
             style={{ objectFit: "cover", objectPosition: "center top" }}
