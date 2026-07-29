@@ -1,105 +1,85 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import {
+  Atom,
+  Bot,
+  CircleCheck,
+  Code,
+  Compass,
+  Database,
+  FileText,
+  Gauge,
+  GitBranch,
+  Layers,
+  LayoutTemplate,
+  PenLine,
+  Plug,
+  Rocket,
+  Search,
+  Server,
+  ShieldCheck,
+  Users,
+  Waves,
+  Zap,
+} from "lucide-react";
+import { competencies } from "../data/competencies";
 
 const easeOutCubic = [0.33, 1, 0.68, 1];
 
-// Copy ships verbatim from .claude/content/competency-copy-final.md
-// Pillars describe the pattern, not projects. No project names, no single-project stats.
-const competencies = [
-  {
-    id: "design-systems",
-    category: "Design Systems & Craft",
-    claim: "I make products feel inevitable.",
-    proof:
-      "Tokens to components to motion, built from scratch and built for teams to ship on. The last 10% is the part I care about most.",
-    chips: ["Design Systems", "Figma to Code", "Motion & Interaction", "Typography"],
-  },
-  {
-    id: "full-stack",
-    category: "Full-Stack Engineering",
-    claim: "Frontend led. Full stack shipped.",
-    proof:
-      "A decade deep on the front, from design systems to advanced CSS. Behind it: Postgres, APIs, and pipelines that hold up at federal scale.",
-    substack: [
-      { lead: "Frontend, a decade deep.", rest: "React, Next.js, TypeScript, advanced CSS." },
-      { lead: "Backend, shipped and steady.", rest: "Postgres, APIs, data pipelines." },
-    ],
-    chips: ["React & Next.js", "TypeScript", "PostgreSQL", "Performance"],
-  },
-  {
-    id: "ai-product",
-    category: "AI Product Engineering",
-    claim: "AI products that prove their answers.",
-    proof:
-      "RAG, agentic workflows, and eval suites wired into CI. If a model is in the product, it gets measured. After hours, the same obsession in hardware.",
-    chips: ["RAG", "Evals & CI", "LangGraph & MCP", "Agentic Workflows"],
-  },
-  {
-    id: "product-leadership",
-    category: "Product Leadership",
-    claim: "The role changes. The standard doesn't.",
-    proof:
-      "VP of Product, studio founder, Director roles across federal and Fortune 500. Teams led, clients kept, outcomes owned.",
-    chips: ["Product Strategy", "Client Leadership", "Zero to One", "Team Direction"],
-  },
-];
+const ICONS = {
+  Atom,
+  Bot,
+  CircleCheck,
+  Code,
+  Compass,
+  Database,
+  FileText,
+  Gauge,
+  GitBranch,
+  Layers,
+  LayoutTemplate,
+  PenLine,
+  Plug,
+  Rocket,
+  Search,
+  Server,
+  ShieldCheck,
+  Users,
+  Waves,
+  Zap,
+};
 
-function CompetencyCard({ competency }) {
+function Row({ competency }) {
   return (
-    <div
-      className="v2-card v2-card-solid"
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "14px",
-        height: "100%",
-      }}
-    >
-      <p className="v2-eyebrow">{competency.category}</p>
+    <div className="v2-comp-row">
+      <div className="v2-comp-left">
+        <span className="v2-comp-idx">{competency.index}</span>
+        <h3 className="v2-comp-category">{competency.category}</h3>
+        <p className="v2-comp-claim">{competency.claim}</p>
+        <p className="v2-comp-proof">{competency.proof}</p>
+      </div>
 
-      <h3 className="v2-h3" style={{ fontSize: "1.25rem" }}>
-        {competency.claim}
-      </h3>
-
-      <p
-        style={{
-          fontSize: "0.9375rem",
-          lineHeight: 1.6,
-          color: "var(--v2-text-secondary)",
-        }}
-      >
-        {competency.proof}
-      </p>
-
-      {competency.substack && (
-        <div className="v2-substack">
-          {competency.substack.map((row) => (
-            <div key={row.lead} className="v2-substack-row">
-              <b>{row.lead}</b>
-              {row.rest}
+      <div className="v2-comp-right">
+        {competency.groups.map((group) => (
+          <div key={group.label}>
+            <div className="v2-comp-group-label">{group.label}</div>
+            <div className="v2-comp-skills">
+              {group.skills.map((skill, i) => {
+                const Icon = ICONS[skill.icon];
+                return (
+                  <span
+                    key={`${skill.label}-${i}`}
+                    className="v2-comp-skill"
+                    tabIndex={0}
+                  >
+                    <Icon aria-hidden="true" strokeWidth={1.6} />
+                    {skill.label}
+                  </span>
+                );
+              })}
             </div>
-          ))}
-        </div>
-      )}
-
-      <div
-        style={{
-          display: "flex",
-          gap: "6px",
-          flexWrap: "wrap",
-          marginTop: "auto",
-          paddingTop: "6px",
-        }}
-      >
-        {competency.chips.map((chip) => (
-          <span
-            key={chip}
-            className="v2-pill v2-pill-neutral"
-            style={{ fontSize: "11px", padding: "4px 10px" }}
-          >
-            {chip}
-          </span>
+          </div>
         ))}
       </div>
     </div>
@@ -130,24 +110,23 @@ export default function CompetenciesSection() {
       <div className="v2-container">
         {headingBlock}
 
-        <div className="v2-competencies-grid">
-          {competencies.map((comp, i) =>
+        <div className="v2-comp-rows">
+          {competencies.map((c, i) =>
             shouldReduceMotion ? (
-              <CompetencyCard key={comp.id} competency={comp} />
+              <Row key={c.id} competency={c} />
             ) : (
               <motion.div
-                key={comp.id}
+                key={c.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{
                   duration: 0.6,
                   ease: easeOutCubic,
-                  delay: i * 0.1,
+                  delay: i * 0.08,
                 }}
-                style={{ height: "100%" }}
               >
-                <CompetencyCard competency={comp} />
+                <Row competency={c} />
               </motion.div>
             )
           )}

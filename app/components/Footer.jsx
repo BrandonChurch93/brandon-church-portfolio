@@ -5,7 +5,7 @@ export default function Footer() {
 
   const socials = [
     { label: "GitHub", href: "https://github.com/BrandonChurch93", Icon: Github },
-    { label: "LinkedIn", href: "https://linkedin.com/in/brandonchurch93", Icon: Linkedin },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/brandon-church-ms", Icon: Linkedin },
     { label: "CodePen", href: "https://codepen.io/BrandonLeoChurch", Icon: CodepenIcon },
     { label: "YouTube", href: "https://youtube.com/@BrandonChurch", Icon: Youtube },
   ];

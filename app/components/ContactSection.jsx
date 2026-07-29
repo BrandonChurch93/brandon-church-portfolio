@@ -104,13 +104,13 @@ function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+    <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
       <input type="text" name="_honey" style={{ display: "none" }} tabIndex={-1} aria-hidden="true" />
       <input type="hidden" name="_subject" value="New Portfolio Contact!" />
       <input type="hidden" name="_template" value="table" />
       <input type="hidden" name="_captcha" value="false" />
 
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }} className="v2-form-grid">
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }} className="v2-form-grid">
         <div>
           <label htmlFor="contact-name" className="v2-form-label">Name</label>
           <input id="contact-name" name="name" type="text" required className="v2-input" placeholder="Your name" autoComplete="name" />
@@ -123,7 +123,7 @@ function ContactForm() {
 
       <div>
         <label htmlFor="contact-message" className="v2-form-label">Message</label>
-        <textarea id="contact-message" name="message" required rows={5} className="v2-input" placeholder="Tell me about your project..." style={{ resize: "vertical", minHeight: "140px" }} />
+        <textarea id="contact-message" name="message" required rows={5} className="v2-input" placeholder="Tell me about your project..." style={{ resize: "vertical", minHeight: "176px" }} />
       </div>
 
       {status === "error" && (
@@ -149,7 +149,7 @@ export default function ContactSection() {
   const shouldReduceMotion = useReducedMotion();
 
   const content = (
-    <div style={{ maxWidth: "640px", margin: "0 auto" }}>
+    <div style={{ maxWidth: "880px", margin: "0 auto" }}>
       {/* Heading — centered, no subtext */}
       <div style={{ textAlign: "center", marginBottom: "40px" }}>
         <p className="v2-eyebrow" style={{ marginBottom: "24px" }}>Contact</p>

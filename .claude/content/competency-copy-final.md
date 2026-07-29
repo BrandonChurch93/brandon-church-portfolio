@@ -1,6 +1,9 @@
 # Competencies, Credo, Intros & Tidbits · Final Copy
 
 Status: APPROVED by Brandon (Jul 28, 2026). Ship verbatim. No paraphrasing, no "improvements."
+Revised Jul 29, 2026 during refinement R8 to match what actually ships: the Core Competencies
+section was regenerated from the shipped implementation after the R4 rebuild, the credo strip
+was replaced with the Option 2 line per R3, and the tidbits were removed from the site per R2.
 
 ## Section intros
 
@@ -10,35 +13,54 @@ Status: APPROVED by Brandon (Jul 28, 2026). Ship verbatim. No paraphrasing, no "
 
 ## Credo strip (standalone, sits above Core Competencies; the only strip on the page)
 
-Every product I've shipped has passed federal accessibility audits. All of them.
+Every product I've shipped for the federal government has passed its accessibility audit, and everything I build today starts accessible, from the design system up.
 SECTION 508 · WCAG 2.2 · 100% PASS RATE
 
-## Core Competencies (2x2, order as listed)
+The closing phrase "accessible, from the design system up." carries the accent color.
+Replaced the previous line ("Every product I've shipped has passed federal accessibility
+audits. All of them.") on Jul 29, 2026 per refinement R3.
 
-Rule applied here: pillars describe the pattern, not projects. Cards show instances, About tells the story. Do not add project names or single-project stats to pillar copy.
+## Core Competencies (editorial rows, order as listed)
 
-**1 · Design Systems & Craft**
-Claim: I make products feel inevitable.
-Proof: Tokens to components to motion, built from scratch and built for teams to ship on. The last 10% is the part I care about most.
-Chips: Design Systems · Figma to Code · Motion & Interaction · Typography
+Canonical source for this section is `.claude/design/competencies-mock-v6.html` per refinement
+rule R-A. The text below was regenerated from the shipped implementation on Jul 29, 2026 and
+supersedes the previous 2x2 pillar copy.
 
-**2 · Full-Stack Engineering**
-Claim: Frontend led. Full stack shipped.
-Proof: A decade deep on the front, from design systems to advanced CSS. Behind it: Postgres, APIs, and pipelines that hold up at federal scale.
-Substack rows: Frontend, a decade deep. React, Next.js, TypeScript, advanced CSS. | Backend, shipped and steady. Postgres, APIs, data pipelines.
-Chips: React & Next.js · TypeScript · PostgreSQL · Performance
+Rule applied here: pillars describe the pattern, not projects. Cards show instances, About
+tells the story. Do not add project names or single-project stats to pillar copy.
 
-**3 · AI Product Engineering**
+**01 · AI Product Engineering**
 Claim: AI products that prove their answers.
-Proof: RAG, agentic workflows, and eval suites wired into CI. If a model is in the product, it gets measured. After hours, the same obsession in hardware.
-Chips: RAG · Evals & CI · LangGraph & MCP · Agentic Workflows
+Proof: If a model is in the product, it gets measured. After hours, the same obsession in hardware.
+Building: Claude Code · LLM APIs · RAG · hybrid search & re-ranking · LangGraph · MCP · Multi-agent orchestration · Context engineering · Guardrails & structured outputs
+Proving: Eval frameworks · LLM-as-judge · Human-in-the-loop QA · AI observability · CI-gated evals
 
-**4 · Product Leadership**
+**02 · Full-Stack Engineering**
+Claim: Frontend led. Full stack shipped.
+Proof: A decade deep on the front. Behind it, a backend that holds up at federal scale.
+Frontend: React · Next.js · Angular · TypeScript · Advanced CSS · Three.js · Performance
+Backend & Data: Node · Python · PostgreSQL · Data pipelines
+Platforms & Testing: Vercel · AWS · CI/CD · Automated testing
+
+**03 · Design Systems & Craft**
+Claim: I make products feel inevitable.
+Proof: Tokens to components to motion, built from scratch and built for teams to ship on.
+Design & Systems: Figma · UI/UX design · Information architecture · Typography & layout · Motion design · User research · Design tokens · Component libraries
+Accessibility: WCAG 2.2 & Section 508 · ARIA · Screen reader testing · Auditing & remediation
+
+**04 · Product Leadership**
 Claim: The role changes. The standard doesn't.
-Proof: VP of Product, studio founder, Director roles across federal and Fortune 500. Teams led, clients kept, outcomes owned.
-Chips: Product Strategy · Client Leadership · Zero to One · Team Direction
+Proof: VP of Product, studio founder, Director roles across federal and Fortune 500.
+Leading: Product strategy · Workshop facilitation · Stakeholder management · Cross-functional leadership · Hiring & mentorship
+Delivering: Zero-to-one launches · Federal & enterprise compliance · Training & enablement
 
-## About tidbits (tappable, expand in place, one open at a time)
+Totals as shipped: 4 rows · 9 groups · 48 skill items.
+
+## About tidbits · REMOVED FROM SITE
+
+Removed from the About section on Jul 29, 2026 per refinement R2.1. The five fragments are
+retained here as `[later]` content; the candidate future home noted in the review is the
+project detail pages. Nothing below currently renders anywhere on the site.
 
 Label → revealed text:
 

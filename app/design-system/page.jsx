@@ -28,9 +28,12 @@ const c = {
   borderAccentHover: "rgba(212, 165, 116, 0.3)",
 };
 
-const heading = "var(--font-cormorant), Georgia, serif";
-const body = "var(--font-geist-sans), system-ui, sans-serif";
-const mono = "var(--font-geist-mono), monospace";
+// Point at the live design tokens so this page documents the type the site actually
+// ships. It previously named the next/font variables directly, which made it the only
+// page in the build that rendered Cormorant while every other page fell back.
+const heading = "var(--v2-font-heading)";
+const body = "var(--v2-font-body)";
+const mono = "var(--v2-font-mono)";
 
 // ---- Grain Overlay ----
 function GrainOverlay() {

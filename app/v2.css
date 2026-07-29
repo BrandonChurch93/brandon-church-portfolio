@@ -1,6 +1,8 @@
 /* ============================================================
-   V2 DESIGN SYSTEM — Warm Amber + Cormorant Garamond + Geist
+   V2 DESIGN SYSTEM · Warm Amber + system sans
    Clean slate. No old tokens or styles carried over.
+   Typography is the platform sans stack. Webfonts were removed on
+   2026-07-29 after they were found to have never applied.
    ============================================================ */
 
 /* ------------------------------------
@@ -35,9 +37,17 @@
   /* ------------------------------------
      TYPOGRAPHY
      ------------------------------------ */
-  --v2-font-heading: var(--font-cormorant), Georgia, serif;
-  --v2-font-body: var(--font-geist-sans), system-ui, sans-serif;
-  --v2-font-mono: var(--font-geist-mono), monospace;
+  /* The system sans stack is what this site actually renders in, and is now declared
+     rather than inherited by accident. Matches tailwind.config.js fontFamily.sans. */
+  --v2-font-heading: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --v2-font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  /* NOT a mistake: resolves to the sans stack on purpose, per the 2026-07-29 font
+     ruling. Its consumers have always rendered sans; a real monospace stack here
+     would be a visible change, not a fix. */
+  --v2-font-mono: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
 
   /* ------------------------------------
      SPACING (8px grid)
@@ -111,8 +121,11 @@
   color: var(--v2-text);
 }
 
+/* Ceiling lowered from 5.5rem so "AI Product Engineer" holds a single line at desktop.
+   Still fluid: the 8vw curve is unchanged, so the cap is reached at ~940px viewport and
+   the type scales normally below that, wrapping on mobile as expected. */
 .v2-h1 {
-  font-size: clamp(3rem, 8vw, 5.5rem);
+  font-size: clamp(3rem, 8vw, 4.7rem);
 }
 
 .v2-h2 {
@@ -354,10 +367,32 @@ html:has(.v2) ::-webkit-scrollbar-thumb:hover {
 }
 
 .v2-project-img {
-  filter: sepia(0.6) saturate(0.7) brightness(0.7) hue-rotate(-10deg);
   transition:
     filter 600ms cubic-bezier(0.33, 1, 0.68, 1),
     transform 600ms cubic-bezier(0.33, 1, 0.68, 1) !important;
+}
+
+/* Uniform warm treatment for the grid thumbnails, so a logo lockup, a purple UI and a
+   navy card read as one family instead of three. Scoped to .v2-project-img-wrap, which
+   only the uniform card uses, so the flagship's cream screenshot stays the intended pop.
+   Desaturate, then wash with the palette; both lift on hover to reveal the real image. */
+.v2-project-img-wrap .v2-project-img {
+  filter: grayscale(1) brightness(0.8) contrast(1.05);
+}
+
+.v2-project-img-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(160deg, var(--v2-accent), var(--v2-bg));
+  mix-blend-mode: overlay;
+  opacity: 0.34;
+  transition: opacity 600ms var(--v2-ease-bloom);
+}
+
+.v2-card:hover .v2-project-img-wrap::after {
+  opacity: 0;
 }
 
 .v2-card:hover .v2-project-img {
@@ -447,14 +482,14 @@ html:has(.v2) ::-webkit-scrollbar-thumb:hover {
    ------------------------------------ */
 .v2-input {
   width: 100%;
-  padding: 12px 16px;
-  min-height: 44px;
+  padding: 15px 18px;
+  min-height: 52px;
   border-radius: var(--v2-radius-md);
   border: 1px solid var(--v2-border);
   background: var(--v2-bg-alt);
   color: var(--v2-text);
   font-family: var(--v2-font-body);
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.5;
   transition:
     border-color 300ms ease,
@@ -579,56 +614,19 @@ html:has(.v2) ::-webkit-scrollbar-thumb:hover {
 }
 
 /* ------------------------------------
-   COMPETENCIES GRID
-   ------------------------------------ */
-.v2-competencies-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-}
-
-@media (max-width: 768px) {
-  .v2-competencies-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Sub-stack rows inside a pillar card */
-.v2-substack {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
-
-.v2-substack-row {
-  border: 1px solid var(--v2-border);
-  border-radius: var(--v2-radius-md);
-  padding: 10px 12px;
-  font-size: 0.78125rem;
-  line-height: 1.5;
-  color: var(--v2-text-muted);
-}
-
-.v2-substack-row b {
-  display: block;
-  color: var(--v2-text);
-  font-weight: 500;
-  margin-bottom: 2px;
-}
-
-@media (max-width: 460px) {
-  .v2-substack {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ------------------------------------
    ABOUT LAYOUT
    ------------------------------------ */
 .v2-about-layout {
   display: flex;
   gap: clamp(40px, 6vw, 80px);
   align-items: flex-start;
+}
+
+/* The text column leads with an eyebrow and a heading, so centering the photo against
+   the whole column parks it level with the section top. This offset, roughly the height
+   of that heading block, centers it against the prose instead. Removed once stacked. */
+.v2-about-photo {
+  margin-top: clamp(72px, 8vw, 118px);
 }
 
 /* Photo hover — amber glow + scale like featured project */
@@ -666,7 +664,8 @@ html:has(.v2) ::-webkit-scrollbar-thumb:hover {
   }
 
   .v2-about-photo {
-    width: 250px !important;
+    width: 300px !important;
+    margin-top: 0;
   }
 }
 
@@ -807,7 +806,10 @@ html:has(.v2) ::-webkit-scrollbar-thumb:hover {
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--v2-text-dim);
+  /* One step up the ladder from --v2-text-dim, which measured 4.21:1 on the
+     elevated card background and failed the 4.5:1 AA minimum. Muted clears it
+     while keeping the label subordinate to the metric value above it. */
+  color: var(--v2-text-muted);
 }
 
 /* Feature rows — hover highlight */
@@ -1147,11 +1149,13 @@ html:has(.v2) ::-webkit-scrollbar-thumb:hover {
   pointer-events: none;
 }
 
+/* The hero section already centers its content via flex `align-items: center`.
+   These breakpoints previously lifted the text (-80px, then -130px) to clear the
+   cube once it becomes bottom-anchored. Those offsets were tuned against a
+   two-line H1; with the single-line title they left the block visibly high, so the
+   lift is removed and the content sits truly centered at every width. The cube's
+   own repositioning is unchanged. */
 @media (max-width: 1200px) {
-  .v2-hero-content {
-    transform: translateY(-80px);
-  }
-
   .v2-hero-cube {
     top: auto;
     bottom: -100px;
@@ -1160,10 +1164,6 @@ html:has(.v2) ::-webkit-scrollbar-thumb:hover {
 }
 
 @media (max-width: 768px) {
-  .v2-hero-content {
-    transform: translateY(-130px);
-  }
-
   .v2-hero-cube {
     opacity: 0.3;
   }
@@ -1213,63 +1213,6 @@ html:has(.v2) ::-webkit-scrollbar-thumb:hover {
 }
 
 /* ------------------------------------
-   TIDBITS (About)
-   Tappable pills that expand one panel in place beneath the row.
-   ------------------------------------ */
-
-.v2-tidbit {
-  font-family: inherit;
-  font-size: 0.875rem;
-  font-weight: 400;
-  color: var(--v2-text);
-  background: var(--v2-bg-alt);
-  border: 1px solid var(--v2-border-hover);
-  border-radius: var(--v2-radius-full);
-  padding: 9px 16px;
-  cursor: pointer;
-  transition:
-    border-color var(--v2-duration-state) ease,
-    background-color var(--v2-duration-state) ease,
-    color var(--v2-duration-state) ease;
-}
-
-.v2-tidbit:hover {
-  border-color: var(--v2-border-accent-hover);
-}
-
-.v2-tidbit[aria-expanded="true"] {
-  background: var(--v2-accent-muted);
-  border-color: var(--v2-border-accent-hover);
-  color: var(--v2-accent);
-}
-
-.v2-tidbit-panel {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-top: 16px;
-  padding: 18px 20px;
-  background: var(--v2-bg-alt);
-  border: 1px solid var(--v2-border);
-  border-radius: var(--v2-radius-lg);
-}
-
-.v2-tidbit-photo {
-  flex: 0 0 84px;
-  height: 64px;
-  border-radius: var(--v2-radius-md);
-  border: 1px solid var(--v2-border);
-  background: var(--v2-surface);
-}
-
-@media (max-width: 520px) {
-  .v2-tidbit-panel {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-
-/* ------------------------------------
    CREDO STRIP
    Full-width band between About and Core Competencies.
    ------------------------------------ */
@@ -1288,13 +1231,22 @@ html:has(.v2) ::-webkit-scrollbar-thumb:hover {
 
 .v2-credo-line {
   font-family: var(--v2-font-heading);
-  font-size: clamp(1.375rem, 2.8vw, 1.875rem);
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
   font-weight: 500;
-  line-height: 1.25;
+  line-height: 1.35;
   letter-spacing: -0.01em;
   color: var(--v2-text);
-  max-width: 34ch;
+  /* Measured: sets on exactly two lines from 768px up and wraps cleanly below,
+     while keeping the largest type size that still achieves the two-line setting. */
+  max-width: 58ch;
   margin: 0 auto;
+  text-wrap: balance;
+}
+
+/* Closing phrase carries the accent, matching the mock's .claim treatment. */
+.v2-credo-accent {
+  color: var(--v2-accent);
+  font-weight: 600;
 }
 
 .v2-credo-sub {
@@ -1419,4 +1371,161 @@ html:has(.v2) ::-webkit-scrollbar-thumb:hover {
 
 .v2-metric-card-link:hover .v2-metric-arrow {
   transform: translate(2px, -2px);
+}
+
+/* ------------------------------------
+   CORE COMPETENCIES · editorial rows
+   Structure and behavior per .claude/design/competencies-mock-v6.html,
+   rebuilt on the site's own tokens.
+   ------------------------------------ */
+
+.v2-comp-rows {
+  border-top: 1px solid var(--v2-border);
+}
+
+.v2-comp-row {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 48px;
+  padding: 46px 28px;
+  margin: 0 -28px;
+  border-bottom: 1px solid var(--v2-border);
+  position: relative;
+}
+
+/* Hover wash: an overlay so the gradient sits behind the text, inset to the row's
+   own negative margins so it reads as padded rather than clipping the content. */
+.v2-comp-row::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--v2-radius-lg);
+  background: linear-gradient(90deg, var(--v2-accent-muted), transparent 60%);
+  opacity: 0;
+  transition: opacity 350ms ease;
+  pointer-events: none;
+}
+
+.v2-comp-row:hover::before {
+  opacity: 1;
+}
+
+.v2-comp-row > * {
+  position: relative;
+}
+
+.v2-comp-idx {
+  display: block;
+  font-family: var(--v2-font-mono);
+  font-size: 0.75rem;
+  color: var(--v2-text-dim);
+  margin-bottom: 10px;
+}
+
+.v2-comp-category {
+  font-family: var(--v2-font-body);
+  font-size: clamp(1.375rem, 2.6vw, 1.75rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.v2-comp-claim {
+  color: var(--v2-accent);
+  font-size: 0.96875rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  margin-bottom: 12px;
+}
+
+.v2-comp-proof {
+  color: var(--v2-text-muted);
+  font-size: 0.90625rem;
+  line-height: 1.55;
+  max-width: 38ch;
+}
+
+.v2-comp-right {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.v2-comp-group-label {
+  font-size: 0.65625rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--v2-text-dim);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.v2-comp-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 6px;
+}
+
+.v2-comp-skill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 10px;
+  border-radius: var(--v2-radius-md);
+  font-size: 0.8125rem;
+  color: var(--v2-text-muted);
+  cursor: default;
+  transition:
+    transform 180ms ease,
+    color 180ms ease,
+    background-color 180ms ease;
+}
+
+.v2-comp-skill svg {
+  width: 15px;
+  height: 15px;
+  flex: 0 0 15px;
+  color: var(--v2-text-dim);
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.v2-comp-skill:hover,
+.v2-comp-skill:focus-visible {
+  color: var(--v2-text);
+  background: var(--v2-accent-muted);
+  transform: translateY(-2px);
+}
+
+.v2-comp-skill:hover svg,
+.v2-comp-skill:focus-visible svg {
+  color: var(--v2-accent);
+  transform: scale(1.12);
+}
+
+@media (max-width: 900px) {
+  .v2-comp-row {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    padding: 38px 20px;
+    margin: 0 -20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .v2-comp-row::before,
+  .v2-comp-skill,
+  .v2-comp-skill svg {
+    transition-duration: 0.01ms !important;
+  }
+  .v2-comp-skill:hover,
+  .v2-comp-skill:focus-visible {
+    transform: none;
+  }
+  .v2-comp-skill:hover svg,
+  .v2-comp-skill:focus-visible svg {
+    transform: none;
+  }
 }

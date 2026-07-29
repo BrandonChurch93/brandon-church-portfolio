@@ -2,7 +2,6 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
-import Tidbits from "./Tidbits";
 
 const easeOutCubic = [0.33, 1, 0.68, 1];
 
@@ -57,15 +56,13 @@ export default function AboutSection() {
             real problems, in software and in the physical world.
           </p>
         </div>
-
-        <Tidbits />
       </div>
 
       {/* Photo */}
       <div
         style={{
           flexShrink: 0,
-          width: "clamp(240px, 25vw, 320px)",
+          width: "clamp(240px, 29vw, 374px)",
           alignSelf: "center",
         }}
         className="v2-about-photo"
@@ -75,7 +72,7 @@ export default function AboutSection() {
             borderRadius: "var(--v2-radius-xl)",
             overflow: "hidden",
             border: "1px solid var(--v2-border)",
-            aspectRatio: "3 / 4",
+            aspectRatio: "3 / 4.4",
             position: "relative",
           }}
         >
@@ -83,7 +80,7 @@ export default function AboutSection() {
             src="/images/headshot.png"
             alt="Brandon Church, AI Product Engineer"
             fill
-            sizes="(max-width: 768px) 200px, 320px"
+            sizes="(max-width: 768px) 300px, 440px"
             style={{ objectFit: "cover", objectPosition: "center top" }}
           />
         </div>

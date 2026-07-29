@@ -1,26 +1,14 @@
-import { Cormorant_Garamond, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "./v2.css";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import ScrollProgress from "./components/ScrollProgress";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const cormorantGaramond = Cormorant_Garamond({
-  variable: "--font-cormorant",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  style: ["normal", "italic"],
-});
+// The site renders in the system sans stack. Cormorant Garamond, Geist and Geist Mono
+// were previously loaded here but never applied: their next/font variables landed on
+// <body> while v2.css composed --v2-font-* at :root, so those tokens were invalid at
+// computed-value time and inherited empty everywhere. The webfonts were downloaded and
+// discarded. They are gone; --v2-font-* now declares the stack that actually renders.
 
 export const metadata = {
   metadataBase: new URL("https://brandonchurchportfolio.com"),
@@ -52,9 +40,7 @@ function GlowBackground() {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="dark">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${cormorantGaramond.variable} antialiased`}
-      >
+      <body className="antialiased">
         <div className="v2">
           <GrainOverlay />
           <GlowBackground />

@@ -12,7 +12,9 @@ export default function CredoStrip() {
   const content = (
     <div className="v2-container" style={{ textAlign: "center" }}>
       <p className="v2-credo-line">
-        Every product I&apos;ve shipped has passed federal accessibility audits. All of them.
+        Every product I&apos;ve shipped for the federal government has passed its
+        accessibility audit, and everything I build today starts{" "}
+        <span className="v2-credo-accent">accessible, from the design system up.</span>
       </p>
       <p className="v2-credo-sub">SECTION 508 · WCAG 2.2 · 100% PASS RATE</p>
     </div>

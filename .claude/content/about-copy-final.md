@@ -18,3 +18,13 @@ Now the problems I can't put down run through AI. I ship AI products end to end,
 
 - The number is $43 billion (yearly). The live site currently says $40 billion in the About section. Correct it everywhere during the coherence sweep: About, Full-Stack Engineering pillar, resume if applicable.
 - Section heading stays "How I got here" unless amended later.
+- Years of experience: **twelve**. Ruled by Brandon on Jul 29, 2026 (refinement R0.3); the resume's "11" was stale and is corrected on his side. No site edits followed.
+- **Hero subhead: FINALIZED Jul 29, 2026.** Previously deferred under refinement rule R-D, now replaced by amendment and shipping verbatim:
+
+  > I believe the next decade will bring an explosion of scientific discovery and new human prosperity. I'm making my contribution: AI products, end to end, solving problems at every scale.
+
+  (Supersedes a first version supplied earlier the same day, which opened "the next decade
+  of scientific discovery and human prosperity gets built, not wished for". That wording
+  never shipped beyond a local build.)
+
+  It renders in both hero branches. Note the page's meta/OG/Twitter/JSON-LD `description` fields still carry the previous subhead wording, which was deliberate: those are SEO copy, not the hero line, and changing them was not part of the amendment. Flagged for Brandon.

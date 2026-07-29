@@ -72,11 +72,16 @@ export default function ProjectCard({
             marginBottom: "16px",
           }}
         >
-          {(project.cardTechStack || project.techStack.slice(0, 4)).map((tech) => (
-            <span key={tech} className="v2-pill v2-pill-neutral" style={{ fontSize: "11px", padding: "4px 10px" }}>
-              {tech}
-            </span>
-          ))}
+          {/* Uniform cards cap at 3 chips; the flagship keeps 4 via FlagshipCard.
+              `cardTechStackGrid` lets a project that renders in both places choose a
+              different three here without disturbing its flagship chip order. */}
+          {(project.cardTechStackGrid || project.cardTechStack || project.techStack)
+            .slice(0, 3)
+            .map((tech) => (
+              <span key={tech} className="v2-pill v2-pill-neutral" style={{ fontSize: "11px", padding: "4px 10px" }}>
+                {tech}
+              </span>
+            ))}
         </div>
 
         {/* View link */}

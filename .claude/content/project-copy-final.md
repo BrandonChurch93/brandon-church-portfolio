@@ -29,13 +29,19 @@ Note: these two lines were stale and were corrected on 2026-07-28 during P1 to m
 `competency-copy-final.md`, which is canonical for section intros alongside the
 checklist's inline copy blocks.
 
-## Chip lists (max 4, no version numbers, differentiators only)
+## Chip lists (flagship max 4 · uniform grid cards max 3, no version numbers, differentiators only)
 
-- Ask the Claude Docs: RAG Pipeline · CI-Scored Evals · pgvector · Cited Answers
-- Modern Softworks: Design System · MDX Pipeline · GSAP · Security Headers
-- Hero Animation Builder: SVG Animation · 36 Live Controls · Shareable State · APCA Contrast
-- Micro-Interactions Library: Zero Animation Libs · React Aria · Reduced Motion · Static Generation
+- Ask the Claude Docs (flagship): RAG Pipeline · CI-Scored Evals · pgvector · Cited Answers
+- Ask the Claude Docs (grid card on /work): RAG Pipeline · pgvector · Cited Answers
+- Modern Softworks: Design System · GSAP · Security Headers
+- Hero Animation Builder: 36 Live Controls · Shareable State · APCA Contrast
+- Micro-Interactions Library: Zero Animation Libs · React Aria · Reduced Motion
 - AI Cover Letter Generator: Prompt Spec · Context Extraction · Model Fallback Chain
+
+Note: capped to 3 on uniform grid cards on 2026-07-29 during refinement R6, per Brandon's
+confirmation. Chips dropped: MDX Pipeline (Modern Softworks), SVG Animation (Hero Animation
+Builder), Static Generation (Micro-Interactions), and CI-Scored Evals from the chatbot's
+grid card only. The flagship keeps all four in the original approved order.
 
 ## Truth sweep (build doc items, from the Opus code audit)
 

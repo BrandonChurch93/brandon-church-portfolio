@@ -61,7 +61,7 @@ export default function HeroSection() {
           <>
             <div style={{ marginBottom: "24px" }}>
               <MaskedLine delay={0.3} duration={0.5}>
-                <p className="v2-eyebrow">Design Engineer</p>
+                <p className="v2-eyebrow">Designer · Engineer · Founder</p>
               </MaskedLine>
             </div>
             <SplitText
@@ -81,8 +81,9 @@ export default function HeroSection() {
               }}
               {...blurFadeUp(1.0)}
             >
-              I design, build, and ship full-stack AI products end to end, built on
-              twelve years of UX, accessibility, and frontend leadership.
+              I believe the next decade will bring an explosion of scientific discovery
+              and new human prosperity. I&apos;m making my contribution: AI products, end
+              to end, solving problems at every scale.
             </motion.p>
             <motion.div
               style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}
@@ -102,14 +103,15 @@ export default function HeroSection() {
         ) : (
           <>
             <p className="v2-eyebrow" style={{ marginBottom: "24px" }}>
-              Design Engineer
+              Designer · Engineer · Founder
             </p>
             <h1 className="v2-heading v2-h1" style={{ marginBottom: "24px" }}>
               AI Product Engineer
             </h1>
             <p className="v2-body" style={{ marginBottom: "40px" }}>
-              I design, build, and ship full-stack AI products end to end, built on
-              twelve years of UX, accessibility, and frontend leadership.
+              I believe the next decade will bring an explosion of scientific discovery
+              and new human prosperity. I&apos;m making my contribution: AI products, end
+              to end, solving problems at every scale.
             </p>
             <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
               <a href="#selected-work" onClick={(e) => { e.preventDefault(); document.getElementById("selected-work")?.scrollIntoView({ behavior: "smooth" }); }} className="v2-btn v2-btn-primary">

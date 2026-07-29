@@ -74,7 +74,7 @@ const jsonLd = {
       "TypeScript",
     ],
     sameAs: [
-      "https://linkedin.com/in/brandonchurch93",
+      "https://www.linkedin.com/in/brandon-church-ms",
       "https://github.com/BrandonChurch93",
       "https://codepen.io/BrandonLeoChurch",
     ],

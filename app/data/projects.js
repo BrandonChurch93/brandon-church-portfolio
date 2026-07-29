@@ -19,7 +19,10 @@ export const projects = [
     liveUrl: "https://ask-the-claude-docs.vercel.app",
     githubUrl: "https://github.com/BrandonChurch93/Ask-the-Claude-Docs",
     githubLabel: "View Code",
+    // Flagship shows all four in the approved order; the uniform card on /work shows
+    // three, dropping "CI-Scored Evals" per the R6 ruling.
     cardTechStack: ["RAG Pipeline", "CI-Scored Evals", "pgvector", "Cited Answers"],
+    cardTechStackGrid: ["RAG Pipeline", "pgvector", "Cited Answers"],
     techStack: [
       "Next.js 16",
       "React 19",
@@ -66,7 +69,7 @@ export const projects = [
     image: "/images/ModernSoftworks.png",
     liveUrl: "https://www.modernsoftworks.com",
     githubUrl: null,
-    cardTechStack: ["Design System", "MDX Pipeline", "GSAP", "Security Headers"],
+    cardTechStack: ["Design System", "GSAP", "Security Headers"],
     techStack: ["Next.js 15", "React 19", "TypeScript", "GSAP", "MDX", "Resend", "Vercel"],
     metrics: [
       { value: "48", label: "Hand-built components" },
@@ -101,7 +104,7 @@ export const projects = [
     liveUrl: "https://hero-animation-builder.vercel.app",
     githubUrl: "https://github.com/BrandonChurch93/HeroAnimationBuilder",
     githubLabel: "View Code",
-    cardTechStack: ["SVG Animation", "36 Live Controls", "Shareable State", "APCA Contrast"],
+    cardTechStack: ["36 Live Controls", "Shareable State", "APCA Contrast"],
     techStack: [
       "Next.js 16",
       "React 19",
@@ -141,7 +144,7 @@ export const projects = [
     image: "/images/MicroInteractions.svg",
     liveUrl: "https://micro-interactions-library.vercel.app/",
     githubUrl: "https://github.com/BrandonChurch93/micro-interactions-library",
-    cardTechStack: ["Zero Animation Libs", "React Aria", "Reduced Motion", "Static Generation"],
+    cardTechStack: ["Zero Animation Libs", "React Aria", "Reduced Motion"],
     techStack: ["Next.js 14", "TypeScript", "CSS Modules", "Web Animations API", "react-aria-components", "Shiki", "Vercel"],
     metrics: [
       { value: "15", label: "Components" },
