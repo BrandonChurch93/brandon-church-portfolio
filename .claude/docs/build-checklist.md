@@ -208,7 +208,7 @@ Claim TEXT corrections only; layout untouched. From the code audit of 2026-07-28
 
 ---
 
-## P10 · Ship  ⬜
+## P10 · Ship  🟡  (P10.1 merged and P10.4 logged · P10.2 deploy is Brandon's · P10.3 waits on deploy)
 
 **Do:**
 - P10.1 Merge `v2-restructure` per Brandon's go.
@@ -338,6 +338,20 @@ Claim TEXT corrections only; layout untouched. From the code audit of 2026-07-28
 - 2026-07-29 · P9.1 · ✅ **BLOCKER RESOLVED.** Brandon ruled to fix it immediately rather than defer to the P9 re-run. `.v2-metric-label` moved from `--v2-text-dim` to `--v2-text-muted`, chosen over `--v2-text-secondary` because it is the single step up the token ladder that clears AA while keeping the 12px label subordinate to the metric value above it. **Measured 4.21:1 → 6.93:1** against the 4.5:1 requirement. Real-browser axe now returns **zero violations on `/`, `/work` and both audited detail pages at 360/768/1280**. Applied during refinement R1; see `refinement-checklist.md`.
 - 2026-07-29 · P9.7 · ✅ Delivered. Brandon's front-end review produced the eight-step refinement phase now tracked in `.claude/docs/refinement-checklist.md`. A checkpoint commit `69d9f11` was taken first so the restructure and refinement phases stay separable.
 - 2026-07-29 · P9.7 · ✅ **COMPLETE.** The refinement phase finished all eight steps; see `refinement-checklist.md`, every step ✅. Delivered: hero eyebrow, tidbits removed and About rebalanced, credo Option 2, the Core Competencies editorial rebuild against mock v6, grid thumbnail unification, chip cap, and the contact rhythm pass. Two sanctioned scope additions landed alongside: the **P9.1 contrast blocker was fixed** (4.21:1 → 6.93:1) and the **dead webfont loads were removed** after they were found never to have applied, saving 440 KB across 21 files with a verified zero visual diff.
+- 2026-07-29 · **P10.1 · ✅ MERGED.** Refinement work committed as `30aaf1b`, then `v2-restructure` merged into `main` as a clean **fast-forward** (no merge commit, linear history). `main` now sits at `30aaf1b`, three commits ahead of `origin/main`: `9c0d0a4` baseline, `69d9f11` checkpoint, `30aaf1b` refinement. Net across the whole effort: **54 files changed, 4,329 insertions, 5,032 deletions**, so the site ships meaningfully smaller than it started. Post-merge build on `main` green, 13 static pages, and a smoke test returns 200 on `/`, `/work`, a detail page, `sitemap.xml`, `robots.txt` and `/opengraph-image`.
+- 2026-07-29 · **P10.2 · ⏸️ NOT DONE, and deliberately so.** This step is Brandon's by the checklist's own wording. Nothing was pushed: `origin/main` is untouched and the deploy pipeline has not been triggered. Exact command supplied in the handoff.
+- 2026-07-29 · **P10.3 · ⏸️ BLOCKED on P10.2.** The post-deploy production spot check cannot run until the site is live.
+- 2026-07-29 · **P10.4 · ✅ `[later]` wishlist for the next cycle:**
+  1. **Tidbit photos and a home for the five fragments.** Retained verbatim in `competency-copy-final.md`; the review's candidate home was the project detail pages.
+  2. **Concept study + Concepts section thaw.** Design already specced (split card, domain chips, intro line). The `/work` filter system is built and dormant, and activates automatically the moment a second category has entries.
+  3. **LinkedIn About variant** of the new copy.
+  4. **A wide crop of the chatbot** for the flagship visual (P8.3). The current card image works.
+  5. **Re-cropped, consistently framed project screenshots** (R5). The CSS wash is the interim unifier; real crops are the durable fix.
+  6. **Micro-Interactions residual claims** (P7 [later]): "only 6 production dependencies" is still a count, and "Every animation runs on CSS transitions or the native Web Animations API" is still an absolute.
+  7. **`/cube` and `/design-system` are missing a `<title>`** and carry a few axe violations. Both are on the do-not-touch register, so they were left alone; they are quick fixes whenever Brandon wants them.
+  8. **Skip link sits at tab position 8**, after the whole nav, rather than first.
+  9. **Metadata `description` divergence:** the four `page.jsx` description fields and the OG image route still carry the pre-amendment subhead wording, so "twelve years" now appears in visible copy only in About.
+  10. **`--v2-font-mono` resolves to the sans stack** by design; documented in place so nobody "fixes" it.
 - 2026-07-29 · **P9 · ✅ RE-RUN COMPLETE, post-refinement. All gates pass on a clean production build** (dev server stopped and `.next` deleted first, so Lighthouse numbers are meaningful).
   - **P9.1 axe · PASS, hard requirement met.** Zero violations on `/`, `/work`, `/projects/ask-the-claude-docs` and `/projects/modern-softworks`, at 360/768/1280 each, with `color-contrast` and `target-size` genuinely running. Zero horizontal overflow anywhere. Browser console clean, zero errors and zero warnings.
   - **P9.2 Lighthouse · PASS.** `/` accessibility **100**, SEO **100**, performance 88, best-practices 100. `/work` accessibility **100**, SEO **100**, performance 94, best-practices 100. Both clear the ≥95 gate. **Performance improved against the pre-refinement run** (`/` 85 → 88, `/work` 89 → 94), most likely from removing the 440 KB of never-applied webfonts. This also closes the P9.2 baseline gap noted earlier: these numbers are now the recorded baseline.
