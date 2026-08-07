@@ -77,7 +77,7 @@ export default function AboutSection() {
           }}
         >
           <Image
-            src="/images/headshot.png"
+            src="/images/headshot2.jpg"
             alt="Brandon Church, AI Product Engineer"
             fill
             sizes="(max-width: 768px) 300px, 440px"

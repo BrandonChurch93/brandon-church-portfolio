@@ -62,7 +62,7 @@ const jsonLd = {
     name: "Brandon Church",
     jobTitle: "AI Product Engineer",
     url: siteUrl,
-    image: `${siteUrl}/images/headshot.png`,
+    image: `${siteUrl}/images/headshot2.jpg`,
     description:
       "I design, build, and ship full-stack AI products end to end, built on twelve years of UX, accessibility, and frontend leadership.",
     knowsAbout: [
