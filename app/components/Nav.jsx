@@ -209,7 +209,7 @@ export default function Nav() {
             );
           })}
           <a
-            href="/downloads/BrandonChurch_Resume.pdf"
+            href="/downloads/BrandonChurch-Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="v2-btn v2-btn-ghost"
@@ -383,7 +383,7 @@ export default function Nav() {
 
               <div style={{ marginTop: "48px", paddingTop: "24px", borderTop: "1px solid var(--v2-border)" }}>
                 <a
-                  href="/downloads/BrandonChurch_Resume.pdf"
+                  href="/downloads/BrandonChurch-Resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="v2-btn v2-btn-ghost"
