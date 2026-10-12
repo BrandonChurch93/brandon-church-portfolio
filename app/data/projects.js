@@ -69,7 +69,7 @@ export const projects = [
       "Paste a GitHub repo, ask a question, and an agent composes the interface that answers it from a 41-component catalog, with verified numbers and public evals.",
     cardDescription:
       "Paste a GitHub repo, ask a question, and an agent composes the interface that answers it. The model picks the pieces, the code renders them, and every number it writes gets checked against the data.",
-    category: "Generative UI",
+    category: "built",
     homepage: true,
     featured: false,
     image: "/images/genui-github.png",
