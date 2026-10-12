@@ -18,7 +18,7 @@ export async function generateMetadata({ params }) {
 
   return {
     title: `${project.title} | Brandon Church`,
-    description: project.tagline,
+    description: project.metaDescription || project.tagline,
   };
 }
 

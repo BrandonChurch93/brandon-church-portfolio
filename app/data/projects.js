@@ -2,6 +2,7 @@
 // archive, and case-study prev/next via getAdjacentProjects.
 // `homepage` selects the Selected Work roster; `featured` marks the single flagship.
 // `cardTechStack` is the card chip list (max 4); `techStack` stays the full detail-page stack.
+// `metaDescription` is optional and overrides `tagline` as the page's search description.
 export const projects = [
   {
     slug: "ask-the-claude-docs",
@@ -55,6 +56,64 @@ export const projects = [
       "Built by an AI agent under governance: twelve frozen spec documents, three-tier decision authority, phase gates with self-audits, ten escalated rulings, all logged",
       "Hand-built design system: three typefaces as three voices, token palette with measured WCAG contrast, no UI framework",
       "Hardened CI: Playwright e2e with axe, Lighthouse budgets, payload assertions, secret greps and CVE gates that caught three real advisories mid-build",
+    ],
+  },
+  {
+    slug: "generative-ui-github",
+    title: "Generative UI · GitHub",
+    subline: "An agent that composes interfaces from GitHub repo data",
+    tagline:
+      "Paste any public GitHub repo and ask it a question. A model classifies the question, picks from a hand-built catalog of 41 components, and the renderer streams the screen in. Click any card, row or chart point and the screen rewrites itself around it. Every number the model writes is checked against the data it cites, and a public eval harness scores the whole pipeline on every change.",
+    // Search snippet only; the page header keeps the longer tagline above.
+    metaDescription:
+      "Paste a GitHub repo, ask a question, and an agent composes the interface that answers it from a 41-component catalog, with verified numbers and public evals.",
+    cardDescription:
+      "Paste a GitHub repo, ask a question, and an agent composes the interface that answers it. The model picks the pieces, the code renders them, and every number it writes gets checked against the data.",
+    category: "Generative UI",
+    homepage: true,
+    featured: false,
+    image: "/images/genui-github.png",
+    liveUrl: "https://generative-ui-github.vercel.app",
+    githubUrl: "https://github.com/BrandonChurch93/generative-ui-github",
+    githubLabel: "View Code",
+    // Full approved list of four; the uniform card shows three, dropping
+    // "41-Component Catalog" per Brandon's call.
+    cardTechStack: ["Generative UI", "41-Component Catalog", "Live Rewrites", "Public Evals"],
+    cardTechStackGrid: ["Generative UI", "Live Rewrites", "Public Evals"],
+    techStack: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "CSS Modules",
+      "Motion",
+      "GSAP",
+      "Zod",
+      "Anthropic API",
+      "GitHub GraphQL + REST",
+      "Upstash Redis",
+      "Playwright",
+      "Vercel",
+    ],
+    metrics: [
+      { value: "41", label: "Components, five states each" },
+      { value: "$0.002", label: "Per composed answer" },
+      {
+        value: "Live",
+        label: "Eval results",
+        href: "https://generative-ui-github.vercel.app/evals",
+      },
+    ],
+    description:
+      "Most generative UI demos let a model write the page. This one doesn't. The model emits a small JSON description, chosen from a Zod-validated registry, and never touches HTML, CSS or a pixel value; the system decides what everything looks like. Haiku classifies each question into one of fifteen layout templates and fills the slots; Sonnet composes only when no template fits, which keeps a typical answer around a fifth of a cent. Screens arrive as a stream of ops against stable component ids, so a follow-up click doesn't reload anything: the pieces that no longer apply exit in reverse of how they entered, the survivors morph into their new positions, and the new ones draw in. Underneath is a design system I built in Claude Design and then audited to the number: 41 components, each with default, skeleton, empty, error and warming states at three densities, two tokens per status color so text and fills both pass contrast, and six motion moves with Motion owning presence and GSAP owning what happens inside a card. The eval harness runs 99 cases three times each on three model configurations and publishes everything, including the finding that Haiku alone matches production on routing and numbers at a third of the cost.",
+    features: [
+      "Model decides, code renders. The composer emits JSON against a Zod registry and never HTML, class names or colors. Unknown or malformed output renders the component's error state instead of throwing.",
+      "Rewrites in place. Stable ids and a diff engine turn a follow-up click into exits, morphs and entrances rather than a page load. Exit is the strict reverse of enter.",
+      "Two-model routing. Haiku classifies into fifteen templates and fills them; Sonnet composes only off-template. Production answers cost about $0.002 and arrive in about six seconds.",
+      "Numbers are verified. Any figure the model writes into a sentence, delta or chart finding is checked against the data it cites. A mismatch is replaced by a system sentence, never rendered.",
+      "Five states, three densities, every component. Error is never styled as critical, a zero is data not empty, and the frame always renders so you can see what's loading, missing or failed.",
+      "Cost controls that show on screen. Fifteen live compositions per visitor per day, precomputed answers for five sample repos, and a global daily cap that flips the site to cached-only mode and says so.",
+      "Public evals with the failures left in. 99 cases, three runs, three model configurations, scored on template, bindings, numbers, rules, latency and cost, with a regression gate before any composer change can land.",
+      "A design system built to be audited. Tokens generated from one JSON file, CSS modules with no framework, measured contrast on every status color, and Motion plus GSAP split so neither touches the other's element.",
     ],
   },
   {
@@ -139,7 +198,7 @@ export const projects = [
     cardDescription:
       "Fifteen copy-paste micro-interactions, zero animation libraries. The code you copy is the exact code you just watched run, and accessibility isn't a checkbox here, it's three of the fifteen patterns.",
     category: "built",
-    homepage: true,
+    homepage: false,
     featured: false,
     image: "/images/MicroInteractions.svg",
     liveUrl: "https://micro-interactions-library.vercel.app/",
@@ -158,34 +217,6 @@ export const projects = [
       "Command palette search (Cmd+K) with fuzzy matching across all components",
       "Accessibility-first: WCAG 2.1 AA, prefers-reduced-motion respected globally, built on react-aria-components",
       "Hydration-safe dark/light theme toggle with no flash of wrong theme",
-    ],
-  },
-  {
-    slug: "ai-cover-letter-generator",
-    title: "AI Cover Letter Generator",
-    tagline: "Resume in, tailored cover letter out, under 30 seconds.",
-    cardDescription:
-      "Feed it a resume and a job post, get a letter built to an 80-line, paragraph-by-paragraph spec, not a vibe. Extracted context goes in as structured signals, and it exports PDF, Word, or plain text.",
-    category: "built",
-    homepage: false,
-    featured: false,
-    image: "/images/AiCoverLetterGenerator.png",
-    liveUrl: "https://ai-cover-letter-generator-ten.vercel.app/",
-    githubUrl: "https://github.com/BrandonChurch93/AICoverLetterGenerator",
-    cardTechStack: ["Prompt Spec", "Context Extraction", "Model Fallback Chain"],
-    techStack: ["Next.js 15", "React 19", "TypeScript", "OpenAI API", "Tailwind CSS", "jsPDF", "Vercel"],
-    metrics: [
-      { value: "<30s", label: "Generation time" },
-      { value: "3", label: "Export formats" },
-      { value: "3", label: "AI model fallback chain" },
-    ],
-    description:
-      "A web app that takes a resume and job description and generates a tailored cover letter using OpenAI. The API route extracts context like company name, role, and industry from the input, builds industry-specific prompts using the STAR method, and falls back through a 3-model chain if one is unavailable. Form data is LZ-string compressed and auto-saved to sessionStorage so nothing is lost on refresh. Export as formatted PDF, Word, or plain text.",
-    features: [
-      "Prompt engineering with regex context extraction and industry-specific STAR method structure",
-      "Compressed session persistence with 3-second debounce auto-save",
-      "Multi-format export: PDF with auto-pagination, Word with paragraph styling, plain text",
-      "Full accessibility infrastructure: focus trapping, aria-live announcements, reduced motion, keyboard shortcuts",
     ],
   },
 ];
