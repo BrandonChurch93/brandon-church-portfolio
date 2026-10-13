@@ -11,7 +11,7 @@ import ScrollProgress from "./components/ScrollProgress";
 // discarded. They are gone; --v2-font-* now declares the stack that actually renders.
 
 export const metadata = {
-  metadataBase: new URL("https://brandonchurchportfolio.com"),
+  metadataBase: new URL("https://www.brandonchurchportfolio.com"),
   icons: {
     icon: { url: "/favicon.svg", type: "image/svg+xml" },
   },

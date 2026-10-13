@@ -1,6 +1,6 @@
 import { projects } from "./data/projects";
 
-const siteUrl = "https://brandonchurchportfolio.com";
+const siteUrl = "https://www.brandonchurchportfolio.com";
 
 export default function sitemap() {
   const projectUrls = projects

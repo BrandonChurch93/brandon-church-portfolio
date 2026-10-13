@@ -5,7 +5,7 @@ import CredoStrip from "./components/CredoStrip";
 import CompetenciesSection from "./components/CompetenciesSection";
 import ContactSection from "./components/ContactSection";
 
-const siteUrl = "https://brandonchurchportfolio.com";
+const siteUrl = "https://www.brandonchurchportfolio.com";
 
 export const metadata = {
   title: "Brandon Church | AI Product Engineer",
@@ -24,7 +24,7 @@ export const metadata = {
     siteName: "Brandon Church",
     images: [
       {
-        url: "https://brandonchurchportfolio.com/opengraph-image",
+        url: "https://www.brandonchurchportfolio.com/opengraph-image",
         width: 1200,
         height: 630,
         alt: "Brandon Church - AI Product Engineer",
@@ -39,7 +39,7 @@ export const metadata = {
     title: "Brandon Church | AI Product Engineer",
     description:
       "I design, build, and ship full-stack AI products end to end, built on twelve years of UX, accessibility, and frontend leadership.",
-    images: ["https://brandonchurchportfolio.com/opengraph-image"],
+    images: ["https://www.brandonchurchportfolio.com/opengraph-image"],
   },
   robots: {
     index: true,

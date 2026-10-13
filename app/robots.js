@@ -1,4 +1,4 @@
-const siteUrl = "https://brandonchurchportfolio.com";
+const siteUrl = "https://www.brandonchurchportfolio.com";
 
 export default function robots() {
   return {

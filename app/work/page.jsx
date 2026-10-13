@@ -1,6 +1,6 @@
 import WorkArchive from "../components/WorkArchive";
 
-const siteUrl = "https://brandonchurchportfolio.com";
+const siteUrl = "https://www.brandonchurchportfolio.com";
 
 const description =
   "The full catalog. Everything here is real and running, and the list grows as I build.";
